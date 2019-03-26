@@ -1,20 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./pages/Navbar";
-import Features from "./pages/Features";
-import Body from "./pages/Body";
+import Navbar from "./components/Navbar";
+import Search from "../src/components/Search/index.js";
 
 class App extends Component {
 render() {
     return (
       <div>
         <Navbar />
-        
-        <Features />
-        <Body>
-          
-        </Body>
-        <Footer />
+        <Search />
+        {/* <Footer /> */}
       </div>
     );
   };
