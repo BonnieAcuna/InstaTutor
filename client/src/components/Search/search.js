@@ -6,7 +6,7 @@ function Search(query){
     return (
         <Container className="searchContainer">
             <Row>
-                <Col size="md-3">
+                <Col className="text-center" size="md-3">
                     <h6>What subject do you need help with?</h6>
                 </Col>
                 <Col size="md-6">
