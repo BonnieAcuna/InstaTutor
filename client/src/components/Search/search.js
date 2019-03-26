@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container, Row, Col } from "../Grid/index.js";
+import "./searchContainer.css";
 
 function Search(query){
     return (
-        <Container>
+        <Container className="searchContainer">
             <Row>
                 <Col size="md-3">
                     <h6>What subject do you need help with?</h6>
