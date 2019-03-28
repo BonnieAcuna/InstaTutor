@@ -1,8 +1,26 @@
 import React from "react";
 
-const Features = (props) =>
-      <div className="container text-center image-grid">
-        {props.children}
+function Features(props) {
+  return (
+    <div className="card">
+      <div className="img-container">
+        <img alt={props.name} src={props.image} />
       </div>
+      <div className="content">
+        <ul>
+          <li>
+            <strong>Name:</strong> {props.name}
+          </li>
+          <li>
+            <strong>Subject:</strong> {props.subject}
+          </li>
+        </ul>
+      </div>
+      <span onClick={() => props.removeTutor(props.id)} className="remove">
+        𝘅
+      </span>
+    </div>
+  );
+}
 
 export default Features;
