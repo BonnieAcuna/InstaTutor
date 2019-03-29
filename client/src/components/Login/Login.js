@@ -13,12 +13,13 @@ export default function Login(props) {
                     placeholder="Email"
                 />
                 <Input
+                    type="password"
                     value={props.password}
                     onChange={props.handleInputChange}
                     name="password"
                     placeholder="Password"
                 />
-                <button style={{ float: "right", marginBottom: 10 }} className="btn btn-success" onClick={()=> props.loginOnClick(props.email, props.password)}>
+                <button style={{ float: "right", marginBottom: 10 }} className="btn btn-success" onClick={() => props.loginOnClick(props.email, props.password)}>
                     Log In
                 </button>
 

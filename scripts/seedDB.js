@@ -8,31 +8,43 @@ mongoose.connect(
 
 const tutorSeed = [
     {
-        firstName:"John",
+        firstName: "John",
         lastName: "Smith",
         subjects: ["React", "HTML", "css", "Bootstrap"],
-        email:  ""
-        password:
-    },
-    {
-        firstName: "Bonnie",
-        lastName:   "Acuna",
-        subjects: ["React", "HTML", "css", "Bootstrap"],
-        email: "bonnie@gmail.com"
+        email: "jsmith@gmail.com",
         password: "password"
     },
     {
-        firstName:
-        lastName:
-        subjects: [],
-        email:
-        password:
+        firstName: "Jane",
+        lastName: "Gomez",
+        subjects: ["Javascript", "Python"],
+        email: "jane123@gmail.com",
+        password: "password"
     },
     {
-        firstName:
-        lastName:
-        subjects: [],
-        email:
-        password:
+        firstName: "Bill",
+        lastName: "Jones",
+        subjects: ["Math", "Finance", "Economics"],
+        email: "billJones@gmail.com",
+        password: "password"
+    },
+    {
+        firstName: "Erica",
+        lastName: "Garcia",
+        subjects: ["Chemestry", "Biology"],
+        email: "eg123@gmail.com",
+        password: "password"
     }
 ]
+
+db.Tutor
+    .remove({})
+    .then(() => db.Tutor.collection.insertMany(tutorSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });

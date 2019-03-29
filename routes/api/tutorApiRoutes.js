@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const tutorController = require("../../controllers/tutorControllers");
+const tutorControllers = require("../../controllers/tutorControllers");
 
-router.route("/tutors")
+router.route("/")
     .get(tutorControllers.findAll)
-    .post(tutorController.create);
+    .post(tutorControllers.create);
 
-router.route("/tutors/:id")
-    .delete(tutorController.remove);
+router.route("/:id")
+    .delete(tutorControllers.remove);
 
 module.exports = router;
