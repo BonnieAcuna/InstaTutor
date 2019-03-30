@@ -16,7 +16,9 @@ const tutorSchema = new Schema({
     }],
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+        match: /\S+@\S+\.\S+/
     },
     password: {
         type: String,
