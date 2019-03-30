@@ -1,12 +1,13 @@
 import React from "react";
+import "./style.css";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg">
       <a className="navbar-brand" href="/">
-        <img src={ require('../../logoNoTitle.png')} width="30" height="30" className="d-inline-block align-top" alt=""></img>
+        <img src={ require('../../logoNoTitle.png')} width="70" height="60" className="d-inline-block align-top" alt=""></img>
     </a>
-  <a className="navbar-brand" href="/">Instatutor</a>
+  <a className="navbar-brand titleName" href="/">InstaTutor</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -16,7 +17,7 @@ function Nav() {
     </div>
   </div>
   <div className="d-flex flex-row-reverse bd-highlight">
-    <a class="p-2 bd-highlight" href="/signup" tabindex="-1">Sign-up</a><a class="p-2 bd-highlight" href="/login" tabindex="-1">Login</a>
+    <a className="p-2 bd-highlight" href="/signup" tabIndex="-1">Sign-up</a><a className="p-2 bd-highlight" href="/login" tabIndex="-1">Login</a>
     {/* Possible change on how to login to app */}
       {/* <form>
         <div className="row">
