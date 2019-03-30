@@ -1,8 +1,15 @@
 import React from "react";
 
+
 function Features(props) {
+  
+  
   return (
+    <div className="comtainer">
     <div className="card">
+      <span onClick={() => props.removeTutor(props.id)} className="remove">
+        𝘅
+      </span>
       <div className="img-container">
         <img alt={props.name} src={props.image} />
       </div>
@@ -16,11 +23,9 @@ function Features(props) {
           </li>
         </ul>
       </div>
-      <span onClick={() => props.removeTutor(props.id)} className="remove">
-        𝘅
-      </span>
+    </div>
     </div>
   );
-}
+  }
 
 export default Features;
