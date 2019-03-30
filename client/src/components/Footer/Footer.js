@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from '../Grid/index';
+//import { Container, Row } from '../Grid/index';
 
 class Footer extends React.Component {
     render(){
