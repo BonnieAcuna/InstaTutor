@@ -4,7 +4,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="/">
-        <img src={ require('../../logo.png')} width="30" height="30" className="d-inline-block align-top" alt=""></img>
+        <img src={ require('../../logoNoTitle.png')} width="30" height="30" className="d-inline-block align-top" alt=""></img>
     </a>
   <a className="navbar-brand" href="/">Instatutor</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
