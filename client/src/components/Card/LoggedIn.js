@@ -13,7 +13,7 @@ function loggedInCard(props) {
             </div>
             <div classname="card-footer">
                 Price: {props.price},
-                Location: {props.city, props.state}
+                Location: {props.city} , {props.state}
                 Contact Tutor: {props.link}
             </div>
         </div>
