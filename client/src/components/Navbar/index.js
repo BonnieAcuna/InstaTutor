@@ -17,7 +17,9 @@ function Nav() {
     </div>
   </div>
   <div className="d-flex flex-row-reverse bd-highlight">
-    <a className="p-2 bd-highlight" href="/signup" tabIndex="-1">Sign-up</a><a className="p-2 bd-highlight" href="/login" tabIndex="-1">Login</a>
+
+    <a class="p-2 bd-highlight" href="/signup" tabindex="-1">Login/Sign-up</a>
+
     {/* Possible change on how to login to app */}
       {/* <form>
         <div className="row">
