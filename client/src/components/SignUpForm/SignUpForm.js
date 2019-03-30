@@ -11,7 +11,7 @@ export default function SignUpForm(props) {
                 <div className="ml-3">
                     <h4>Sign up as:</h4>
                 </div>
-                <form id="userType" className="ml-4">
+                <form id="userTypeId" className="ml-4">
                     <input type="radio" name="userType" value="tutor" onChange={props.handleInputChange}/> Tutor
                     <input type="radio" name="userType" value="user" className="ml-4" onChange={props.handleInputChange}/> User
                 </form>
@@ -66,7 +66,7 @@ export default function SignUpForm(props) {
                         pushSubject={props.pushSubject}
                     />
                 </Row>
-                <button type="button" className="btn btn-primary mt-2 float-right" onClick={() => props.signUpOnClick(props.userType, props.firstName, props.lastName, props.email, props.password, props.subject, props.subjects)}>Sign Up</button>
+                <button type="button" className="btn btn-primary mt-2 float-right" onClick={() => props.signUpOnClick(props.userType, props.firstName, props.lastName, props.email, props.password, props.subjects, props.subject,)}>Sign Up</button>
             </form>
         </div>
     )

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/index.js";
-import Features from "./components/Features";
 import Search from "../src/components/Search/index.js";
-import Body from "./components/Body";
 import Signup from "./pages/Signup/Signup";
 import Footer from "./components/Footer/Footer";
-// import Wrapper from "./components/Wrapper";
-
+import Features from "./components/Features";
+import Body from "./components/Body";
 
 class App extends Component {
 //   state = {
@@ -44,7 +42,7 @@ class App extends Component {
             <Route exact path="/" component={Body} />
             <Route exact path="/signup" component={Signup} />
           </Switch>
-          <Footer />
+           <Footer />
         </div>
       </Router>
     );

@@ -17,11 +17,11 @@ export default function TutorSubjects(props) {
                 </div>
                 <div className="col">
                     {props.subjects.map(oneSub => (
-                        <span>
+                        <span key={oneSub}>  
                             <h6>{oneSub}
-                            <button type="button" className="close" aria-label="Close" style={{backgroundColor: "red", color: "white", border: "solid", borderColor:"white", borderRadius:"5%", padding: "2px" }}>
+                            { <button type="button" className="close" aria-label="Close" style={{backgroundColor: "red", color: "white", border: "solid", borderColor:"white", borderRadius:"5%", padding: "2px" }}>
                             x
-                            </button>
+                            </button> }
                             </h6>
                         </span>
                     ))}
