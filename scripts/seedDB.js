@@ -10,6 +10,7 @@ const tutorSeed = [
     {
         firstName: "John",
         lastName: "Smith",
+        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["React", "HTML", "css", "Bootstrap"],
         email: "jsmith@gmail.com",
         password: "password"
@@ -17,6 +18,7 @@ const tutorSeed = [
     {
         firstName: "Jane",
         lastName: "Gomez",
+        image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Javascript", "Python"],
         email: "jane123@gmail.com",
         password: "password"
@@ -24,6 +26,7 @@ const tutorSeed = [
     {
         firstName: "Bill",
         lastName: "Jones",
+        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Math", "Finance", "Economics"],
         email: "billJones@gmail.com",
         password: "password"
@@ -31,6 +34,7 @@ const tutorSeed = [
     {
         firstName: "Erica",
         lastName: "Garcia",
+        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Chemestry", "Biology"],
         email: "eg123@gmail.com",
         password: "password"
