@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/index.js";
-import Search from "../src/components/Search/index.js";
+// import Search from "../src/components/Search/index.js";
 import Signup from "./pages/Signup/Signup";
 import Footer from "./components/Footer/Footer";
 import Features from "./components/Features";
@@ -24,7 +24,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <Search />
+          {/* <Search /> */}
           <Features />
 
           {/* <Wrapper>

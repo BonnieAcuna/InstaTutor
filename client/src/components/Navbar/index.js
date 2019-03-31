@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.scss";
 
 function Nav() {
   return (
@@ -18,7 +18,7 @@ function Nav() {
   </div>
   <div className="d-flex flex-row-reverse bd-highlight">
 
-    <a class="p-2 bd-highlight" href="/signup" tabindex="-1">Login/Sign-up</a>
+    <a className="p-2 bd-highlight" href="/signup" tabIndex="-1">Login/Sign-up</a>
 
     {/* Possible change on how to login to app */}
       {/* <form>
