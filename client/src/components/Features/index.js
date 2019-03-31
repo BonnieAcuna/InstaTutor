@@ -62,14 +62,14 @@ class Features extends React.Component {
       <div 
         className="content"
         style={{display:"flex", alignItems:"center"}}>
-        <ul style={{marginRight: 10}}>
+        {/* <ul style={{marginRight: 10}}>
           <li>
             <strong>ljljdlfsjdflj:</strong> {this.props.name}
           </li>
           <li>
             <strong>Subject:</strong> {this.props.subject}
           </li>
-        </ul>
+        </ul> */}
 
         
         <div style={{display:"flex"}}>
@@ -77,6 +77,7 @@ class Features extends React.Component {
           <FeaturedTutors
             
             id={tutor.id}
+            key={tutor.id}
             name={tutor.firstName + "" + tutor.lastName}  
             image={tutor.image}
             subjects={tutor.subjects}

@@ -1,18 +1,23 @@
 import React, { Component } from "react";
-import { Container, Row } from "../../components/Grid/index";
-import Features from "../Features";
-import API from "../../utils/API";
+// import { Container, Row } from "../../components/Grid/index";
+// import Features from "../Features";
+// import API from "../../utils/API";
 
 
 class FeaturedTutors extends Component {
 
         
-    render() {
+    render(props) {
         console.log(this.props.name)
         return (
-            <div style={{marginRight: 10}}>
-                <img src="https://placehold.it/100"/>       
-            </div>
+            
+            <div className="card">
+                <div className="card-img-top">{this.props.image}
+            <div className="card-body">
+                <p className="card-text">{this.props.name} {this.props.subjects}</p>
+             </div>
+             </div>       
+        </div>
         )
     }
     }
