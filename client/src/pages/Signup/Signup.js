@@ -64,14 +64,12 @@ class Signup extends Component {
             email: email,
             password: password
         })
-            .then( res => {
-                console.log(res)
+            .then(res => {
                 this.setState({
                     email: "",
                     password: ""
                 })
             })
-               
             .catch(err => console.log(err))
     }
 
