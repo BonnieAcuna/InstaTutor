@@ -2,9 +2,11 @@ const express = require("express")
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
+const loginRoute = require("./login");
 
 //API Routes
 router.use("/api", apiRoutes);
+router.use("/login", loginRoute);
 
 
 if (process.env.NODE_ENV === "production"){
