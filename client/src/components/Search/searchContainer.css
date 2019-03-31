@@ -1,4 +1,24 @@
 .searchContainer {
     padding: 10 10 10 10;
-    border: black solid 2px;
+    
+}
+
+.form-control {
+    margin-top: 40px;
+    width: 500px;
+    margin-left: 300px;
+    margin-right: auto;
+}
+
+h6 {
+    color: white;
+    font-size: 40px;
+    margin-top: 50px;
+    -webkit-text-stroke-width: .05px;
+   -webkit-text-stroke-color: black;
+}
+
+button {
+    margin-top: 40px;
+    background-color: rgb(24, 24, 207);
 }

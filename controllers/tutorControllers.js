@@ -1,11 +1,34 @@
 const db = require("../models");
 
+const findRandomVal = arr => Math.floor(Math.random() * arr.length);
+
 module.exports = {
     findAll: function (req, res) {
         db.Tutor
-        .find(req.query)
+        .find({})
         .sort({date: -1})
         .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+    findRandoms: function (req, res) {
+        db.Tutor
+        .find({})
+        .then(dbModel => {
+            const newRandomTutors = [];
+            const usedRandVals = [];
+
+
+            while(newRandomTutors.length < 6){
+                const newRandVal = findRandomVal(dbModel);
+                if(usedRandVals.indexOf(newRandVal) === -1){
+                    newRandomTutors.push(dbModel[newRandVal]);
+                    usedRandVals.push(newRandVal);
+                }
+            }
+
+
+            res.json(newRandomTutors);
+        })
         .catch(err => res.status(422).json(err));
     },
     findById: function(req,res){
