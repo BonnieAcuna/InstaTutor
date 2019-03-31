@@ -17,7 +17,7 @@ class Signup extends Component {
     }
 
     signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
-        if (userType === "tutor"){
+        if (userType === "tutor") {
             API.createTutor({
                 firstName: firstName,
                 lastName: lastName,
@@ -25,53 +25,60 @@ class Signup extends Component {
                 email: email,
                 password: password,
             })
-            .then(res =>{
-                this.setState({
-                    userType: "",
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    password: "",
-                    subject: "",
-                    subjects: []
+                .then(res => {
+                    this.setState({
+                        userType: "",
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                        password: "",
+                        subject: "",
+                        subjects: []
+                    })
                 })
-            })
-            .catch(err => console.log(err));
-        }else{
+                .catch(err => console.log(err));
+        } else {
             API.createUser({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password,
             })
-            .then(res =>{
-                this.setState({
-                    userType: "",
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    password: "",
-                    subject: "",
-                    subjects: []
+                .then(res => {
+                    this.setState({
+                        userType: "",
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                        password: "",
+                        subject: "",
+                        subjects: []
+                    })
                 })
-            })
-            .catch(err => console.log(err))
+                .catch(err => console.log(err))
         }
     }
 
     loginOnClick = (email, password) => {
-        console.log(email)
-        console.log(password)
-        this.setState({
-            email: "",
-            password: ""
+        API.logIn({
+            email: email,
+            password: password
         })
+            .then( res => {
+                console.log(res)
+                this.setState({
+                    email: "",
+                    password: ""
+                })
+            })
+               
+            .catch(err => console.log(err))
     }
 
     pushSubject = (subject) => {
         this.setState({ subjects: [...this.state.subjects, subject] });
-        this.setState({subject: ""})
-      };
+        this.setState({ subject: "" })
+    };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -93,16 +100,16 @@ class Signup extends Component {
                 </Row>
                 <Row>
                     <SignUpForm
-                        userType = {this.state.userType}
-                        firstName = {this.state.firstName}
-                        lastName = {this.state.lastName}
+                        userType={this.state.userType}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
                         email={this.state.email}
                         password={this.state.password}
-                        subject={this.state.subject}        
-                        subjects ={this.state.subjects}              
+                        subject={this.state.subject}
+                        subjects={this.state.subjects}
                         handleInputChange={this.handleInputChange}
                         signUpOnClick={this.signUpOnClick}
-                        pushSubject =  {this.pushSubject}
+                        pushSubject={this.pushSubject}
                     />
                 </Row>
             </Container>
