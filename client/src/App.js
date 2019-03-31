@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/index.js";
-import Search from "../src/components/Search/index.js";
+// import Search from "../src/components/Search/index.js";
 import Signup from "./pages/Signup/Signup";
 import Footer from "./components/Footer/Footer";
 import Features from "./components/Features";
 import Body from "./components/Body";
+import NoMatch from "./pages/NoMatch/index";
 
 class App extends Component {
 //   state = {
@@ -23,7 +24,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <Search />
+          {/* <Search /> */}
           <Features />
 
           {/* <Wrapper>
@@ -41,6 +42,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Body} />
             <Route exact path="/signup" component={Signup} />
+            <Route component={NoMatch} />
           </Switch>
            <Footer />
         </div>
