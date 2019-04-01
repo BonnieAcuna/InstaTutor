@@ -1,8 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import { Row, Col } from "../Grid/index.js";
-import "./searchContainer.css";
+// const express = require("express");
+// const app = express();
 
-function Search(query){
+// app.get("/search", (req,res) => {
+//     const results = new RegExp(`^${req.query.search}`);
+//     res.json(results);
+// })
+
+class Search extends Component {
+    state = {
+        search: ""
+    }
+
+    // componentDidMount(){
+    //     this.loadTutors("css");
+    // }
+
+    // loadTutors = (query) => {
+    //     API.getTutors(query)
+    //     .then(res => this.setState({tutors: res.data.items}))
+    //     .catch(err => console.log(err));
+    // }
+
+    handleInputChange = event => {
+        this.setState({
+          search: event.target.value,
+        });
+      }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.loadTutors(this.state.search)
+    };
+
+    render(){
     return (
         <div className="searchContainer">
             <Row>
@@ -21,9 +53,9 @@ function Search(query){
                 <Col size="md-8"> 
                     <form className="form-inline">
                     <div className="inputForm">  
-                    <input className="form-control" type="text" placeholder="Math, Science, History..." name="search"></input>
+                    <input className="form-control" type="text" placeholder="Math, Science, History..." name="search" value={this.state.search} onChange={this.handleInputChange}></input>
                     </div>
-                    <button type="submit" className="btn btn-light submitbtn ml-3">Submit</button>
+                    <button type="submit" className="btn btn-light submitbtn ml-3" onClick={this.handleFormSubmit}>Submit</button>
                     </form>
                </Col> 
                 <Col size="md-2"> 
@@ -34,6 +66,7 @@ function Search(query){
             
         </div>
     )
+    }
 }
 
 export default Search;
