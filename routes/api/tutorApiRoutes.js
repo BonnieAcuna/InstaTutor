@@ -4,7 +4,7 @@ const tutorControllers = require("../../controllers/tutorControllers");
 const Tutor = require("../../models/Tutor");
 
 router.route("/")
-    .get(tutorControllers.findAll)
+    .get(tutorControllers.findRandoms)
     .post((req, res, next) => {
         Tutor.find({ email: req.body.email })
             .exec()
