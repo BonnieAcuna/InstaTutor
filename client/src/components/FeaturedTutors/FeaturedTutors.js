@@ -9,7 +9,7 @@ class FeaturedTutors extends Component {
 
 
     render(props) {
-        console.log(this.props.name)
+        // console.log(this.props.name)
         return (
             <Row>
             <Col size="sm-4">

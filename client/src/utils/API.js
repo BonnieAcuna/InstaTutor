@@ -10,6 +10,9 @@ export default {
     createTutor: function(tutorData){
         return axios.post("/api/tutors", tutorData)
     },
+    getSearchedTutors: function(query){
+        return axios.get("/api/tutors/search", query)
+    },
     getUser: function(id){
         return axios.get("/api/users/" + id)
     },
