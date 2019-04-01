@@ -57,6 +57,9 @@ router.route("/")
 
 // tutorControllers.create
 
+router.get("/search")
+    .get(tutorControllers.findBySubject);
+
 router.route("/:id")
     .delete(tutorControllers.remove);
 
