@@ -9,7 +9,7 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        this.loadTutors("css");
+        this.handleFormSubmit();
     }
 
     loadTutors = (query) => {
@@ -25,7 +25,6 @@ class Search extends Component {
     }
 
     handleFormSubmit = event => {
-        event.preventDefault();
         this.loadTutors(this.state.search)
     };
 
