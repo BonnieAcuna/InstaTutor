@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "./style.scss";
 import {Link} from "react-router-dom";
 import { Row, Col } from "../../components/Grid/index";
-// import Features from "../Features";
-// import API from "../../utils/API";
-
 
 class FeaturedTutors extends Component {
 
