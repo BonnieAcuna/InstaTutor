@@ -4,8 +4,12 @@ const tutorControllers = require("../../controllers/tutorControllers");
 const Tutor = require("../../models/Tutor");
 
 router.route("/")
+<<<<<<< HEAD
 //   .get(tutorControllers.findBySubject)
     // .get(tutorControllers.findRandoms)
+=======
+  .get(tutorControllers.findBySubject)
+>>>>>>> ff359abfd71d8f11d5ca44fd794ba06126007e92
     .post((req, res, next) => {
         Tutor.find({ email: req.body.email })
             .exec()
@@ -61,5 +65,9 @@ router.route("/search/:query")
 
 router.route("/:id")
     .delete(tutorControllers.remove);
+
+router.route("/random")
+    .get(tutorControllers.findRandoms)
+    
 
 module.exports = router;

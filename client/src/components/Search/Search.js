@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "../Grid/index.js";
 import API from "../../utils/API";
+import "./searchContainer.css";
 
 class Search extends Component {
     state = {

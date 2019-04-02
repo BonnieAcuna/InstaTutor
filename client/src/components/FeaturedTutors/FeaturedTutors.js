@@ -18,7 +18,7 @@ class FeaturedTutors extends Component {
             <div className="container">
                 <div className="card shadow-sm bg-white rounded">
                     <div className="card-img-top">
-                        <img scr={this.props.image} alt="Random Tutor" />
+                        <img src={this.props.image} alt="Random Tutor" />
                         <div className="card-body">
                             <p className="card-text">{this.props.name}</p>
                             <p>{this.props.subjects}</p>

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
     getTutors: function(){
-        return axios.get("/api/tutors")
+        return axios.get("/api/tutors/random")
     },
     getTutor: function(id){
         return axios.get("/api/tutors/" + id)
