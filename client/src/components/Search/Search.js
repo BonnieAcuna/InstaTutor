@@ -12,7 +12,7 @@ class Search extends Component {
 
     loadTutors = (query) => {
         API.getSearchedTutors(query)
-            .then(res => console.log(res.data))
+            .then(res => {this.setState({tutors: res.data})})
             .catch(err => console.log(err));
     }
 
@@ -55,8 +55,7 @@ class Search extends Component {
                     </Col>
                 </Row>
             <Container>
-            <div className="tutorCards">
-        <div style={{display:"flex"}}>
+            <Row>
            {this.state.tutors.map((tutor, index) => (
           <FeaturedTutors
             id={tutor.id}
@@ -66,8 +65,7 @@ class Search extends Component {
             subjects={tutor.subjects}
           />
         ))}
-        </div>
-    </div>
+        </Row>
             </Container>
             </div>
         )
