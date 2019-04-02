@@ -35,10 +35,9 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    findBySubject: function(req,res){
-        console.log(req)
+    findBySubject: function(req, res){
         db.Tutor
-        .find({subjects: {$all: [req.body]}})
+        .find({subjects: "Math" })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },

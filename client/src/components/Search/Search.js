@@ -8,23 +8,26 @@ class Search extends Component {
         searchedTutors: []
     }
 
+    /*
     componentDidMount() {
-        this.handleFormSubmit();
+        this.handleFormSubmit(this.state.search)
     }
+    */
 
     loadTutors = (query) => {
         API.getSearchedTutors(query)
-            .then(res => this.setState({ searchedTutors: res }))
+            .then(res => console.log(res.data))
             .catch(err => console.log(err));
     }
 
     handleInputChange = event => {
         this.setState({
-            search: event.target.value,
+            search: event.target.value
         });
     }
 
     handleFormSubmit = event => {
+        event.preventDefault();
         this.loadTutors(this.state.search)
     };
 
