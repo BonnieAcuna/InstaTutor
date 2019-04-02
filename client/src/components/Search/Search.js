@@ -1,19 +1,14 @@
 import React, { Component } from "react";
-import { Row, Col } from "../Grid/index.js";
+import { Container, Row, Col } from "../Grid/index.js";
 import API from "../../utils/API";
 import "./searchContainer.css";
+import FeaturedTutors from "../FeaturedTutors/FeaturedTutors";
 
 class Search extends Component {
     state = {
         search: "",
-        searchedTutors: []
+        tutors: []
     }
-
-    /*
-    componentDidMount() {
-        this.handleFormSubmit(this.state.search)
-    }
-    */
 
     loadTutors = (query) => {
         API.getSearchedTutors(query)
@@ -57,11 +52,23 @@ class Search extends Component {
                         </form>
                     </Col>
                     <Col size="md-2">
-
                     </Col>
-
                 </Row>
-
+            <Container>
+            <div className="tutorCards">
+        <div style={{display:"flex"}}>
+           {this.state.tutors.map((tutor, index) => (
+          <FeaturedTutors
+            id={tutor.id}
+            key={index}
+            name={tutor.firstName + "" + tutor.lastName}  
+            image={tutor.image}
+            subjects={tutor.subjects}
+          />
+        ))}
+        </div>
+    </div>
+            </Container>
             </div>
         )
     }
