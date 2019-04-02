@@ -17,7 +17,6 @@ module.exports = {
             const newRandomTutors = [];
             const usedRandVals = [];
 
-
             while(newRandomTutors.length < 6){
                 const newRandVal = findRandomVal(dbModel);
                 if(usedRandVals.indexOf(newRandVal) === -1){
@@ -25,7 +24,6 @@ module.exports = {
                     usedRandVals.push(newRandVal);
                 }
             }
-
 
             res.json(newRandomTutors);
         })
@@ -37,8 +35,9 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    findBySubject: function(req,res){
-        db.Tutor.find({subjects: {$all: [req.body]}})
+    findBySubject: function(req, res){
+        db.Tutor
+        .find({subjects: "Math" })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
