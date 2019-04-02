@@ -5,7 +5,6 @@ const Tutor = require("../../models/Tutor");
 
 router.route("/")
   .get(tutorControllers.findBySubject)
-    // .get(tutorControllers.findRandoms)
     .post((req, res, next) => {
         Tutor.find({ email: req.body.email })
             .exec()
@@ -63,5 +62,9 @@ router.route("/")
 
 router.route("/:id")
     .delete(tutorControllers.remove);
+
+router.route("/random")
+    .get(tutorControllers.findRandoms)
+    
 
 module.exports = router;
