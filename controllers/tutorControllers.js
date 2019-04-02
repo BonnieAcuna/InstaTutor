@@ -37,7 +37,8 @@ module.exports = {
     },
     findBySubject: function(req, res){
         db.Tutor
-        .find({subjects: "Math" })
+        .find({subjects: {$in: [req.params.query]}})
+        .collation( { locale: 'en_US', strength: 1 } )
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },

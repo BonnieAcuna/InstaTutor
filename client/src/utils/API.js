@@ -11,7 +11,8 @@ export default {
         return axios.post("/api/tutors", tutorData)
     },
     getSearchedTutors: function(query){
-        return axios.get("/api/tutors", query)
+        console.log(query);
+        return axios.get("/api/tutors/search/" + query)
     },
     getUser: function(id){
         return axios.get("/api/users/" + id)
