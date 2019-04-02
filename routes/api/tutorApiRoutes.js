@@ -57,11 +57,12 @@ router.route("/")
 router.route("/search/:query")
     .get(tutorControllers.findBySubject);
 
-router.route("/:id")
-    .delete(tutorControllers.remove);
-
 router.route("/random")
     .get(tutorControllers.findRandoms)
     
+router.route("/:id")
+    .get(tutorControllers.findById)
+    .delete(tutorControllers.remove);
+
 
 module.exports = router;

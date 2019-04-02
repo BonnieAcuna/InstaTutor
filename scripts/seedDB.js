@@ -20,7 +20,7 @@ const tutorSeed = [
         lastName: "Gomez",
         image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Javascript", "Python"],
-        email: "jane123@gmail.com",
+        email: "jgomez@gmail.com",
         password: "password"
     },
     {
@@ -28,7 +28,7 @@ const tutorSeed = [
         lastName: "Jones",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Math", "Finance", "Economics"],
-        email: "billJones@gmail.com",
+        email: "bjones@gmail.com",
         password: "password"
     },
     {
@@ -36,7 +36,7 @@ const tutorSeed = [
         lastName: "Morrison",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Physics"],
-        email: "jsmith@gmail.com",
+        email: "lmorrison@gmail.com",
         password: "password"
     },
     {
@@ -44,7 +44,7 @@ const tutorSeed = [
         lastName: "Benton",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Algebra", "Math"],
-        email: "billJones@gmail.com",
+        email: "jbenton@gmail.com",
         password: "password"
     },
     {
@@ -52,7 +52,7 @@ const tutorSeed = [
         lastName: "Gallagher",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["History", "Algebra"],
-        email: "eg123@gmail.com",
+        email: "vgallagher@gmail.com",
         password: "password"
     },
     {
@@ -61,7 +61,7 @@ const tutorSeed = [
         lastName: "James",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Chemistry", "Biology"],
-        email: "eg12234233@gmail.com",
+        email: "mjames@gmail.com",
         password: "password"
     },
     {
@@ -69,13 +69,15 @@ const tutorSeed = [
         lastName: "Simpson",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Physics", "World History"],
-        email: "eg12234234233@gmail.com",
-
+        email: "jsimpson@gmail.com",
+        passord: "password"
+    },
+    {
         firstName: "Chloe",
         lastName: "Cameron",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Geometry"],
-        email: "jsmith@gmail.com",
+        email: "ccameron@gmail.com",
         password: "password"
     },
     {
@@ -83,7 +85,7 @@ const tutorSeed = [
         lastName: "Wilkinson",
         image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Javascript", "Python"],
-        email: "jane123@gmail.com",
+        email: "ewilkinson@gmail.com",
         password: "password"
     },
     {
@@ -91,7 +93,7 @@ const tutorSeed = [
         lastName: "Brown",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Chemestry"],
-        email: "billJones@gmail.com",
+        email: "jbrown@gmail.com",
         password: "password"
     },
     {
@@ -99,7 +101,7 @@ const tutorSeed = [
         lastName: "Williams",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Economics", "Math"],
-        email: "eg123@gmail.com",
+        email: "gwilliams@gmail.com",
         password: "password"
     },
     {
@@ -107,7 +109,7 @@ const tutorSeed = [
         lastName: "Madueno",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Latin America Studies", "Mexican History", "History"],
-        email: "jsmith@gmail.com",
+        email: "jmadueno@gmail.com",
         password: "password"
     },
     {
@@ -115,7 +117,7 @@ const tutorSeed = [
         lastName: "Johnson",
         image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["History", "Italian"],
-        email: "jane123@gmail.com",
+        email: "mjohnson@gmail.com",
         password: "password"
     },
     {
@@ -123,7 +125,7 @@ const tutorSeed = [
         lastName: "Jones",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["English", "Writing I"],
-        email: "billJones@gmail.com",
+        email: "mjones@gmail.com",
         password: "password"
     },
     {
@@ -131,7 +133,7 @@ const tutorSeed = [
         lastName: "Marquez",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Spanish I", "Spanish II"],
-        email: "eg123@gmail.com",
+        email: "amarquez@gmail.com",
         password: "password"
     }
 ]
