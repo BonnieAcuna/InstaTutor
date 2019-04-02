@@ -19,7 +19,7 @@ module.exports = {
             const newRandomTutors = [];
             const usedRandVals = [];
             console.log(newRandomTutors);
-            while(newRandomTutors.length < 4){
+            while(newRandomTutors.length < 6){
                 const newRandVal = findRandomVal(dbModel);
                 console.log(newRandVal);
                 if(usedRandVals.indexOf(newRandVal) === -1){
