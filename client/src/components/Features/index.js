@@ -25,28 +25,29 @@ class Features extends React.Component {
     // console.log(this.state);
     return (
     <div className="tutorCards">
-    <div className="card">
+    {/* <div className="card">
       
       <div 
         className="content"
-        style={{display:"flex", alignItems:"center"}}>
+        style={{display:"flex", alignItems:"center"}}> */}
         
         
         <div style={{display:"flex"}}>
            {this.state.tutors.map((tutor, index) => (
           <FeaturedTutors
-            id={tutor.id}
+            id={tutor._id}
+            userid={tutor._id}
             key={index}
-            name={tutor.firstName + "" + tutor.lastName}  
+            name={tutor.firstName + " " + tutor.lastName}  
             image={tutor.image}
-            subjects={tutor.subjects}
+            subjects={tutor.subjects.join(", ")}
             
           />
         ))}
         </div>
         
-      </div>
-    </div>
+      {/* </div>
+    </div> */}
     </div>
     )
   }

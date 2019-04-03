@@ -9,7 +9,7 @@ import API from "../../utils/API";
 //this.props.params.url within my ajax call
 
 
-class userView extends Component {
+class UserView extends Component {
 
     state = {
         tutor: []
@@ -22,8 +22,13 @@ class userView extends Component {
 
     loadTutor() {
         //this.props.params.url call is passed here
-        API.getTutor(id)
-        .then(res=> this.setState({}))
+        console.log(this.props.match.params.userid)
+        API.getTutor(this.props.match.params.userid)
+        .then(res=> {
+            console.log(res.data)
+            // this.setState({})
+            
+        })
         .catch(err=> console.log(err));
     }
 
@@ -31,16 +36,11 @@ class userView extends Component {
         return (
             <Container>
                 <Row>
-                    <TutorView
-                    
-                    
-                    
-                    
-                    />
+                    Yay
                 </Row>
             </Container>
         )
     }
 }
 
-export default userView;
+export default UserView;
