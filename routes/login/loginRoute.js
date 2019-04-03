@@ -2,8 +2,9 @@ const router = require("express").Router();
 const Tutor = require("../../models/Tutor");
 const User = require("../../models/User");
 const bcrypt = require("bcrypt");
-const passport = require("passport")
-const secret = require("../../config/secret")
+const passport = require("passport");
+const secret = require("../../config/secret");
+const jwt = require('jsonwebtoken');
 
 // Validate password
 var comparePassword = function (typedPassword, password) {
@@ -23,10 +24,10 @@ router.route("/")
         else {
             if (comparePassword(req.body.password, user.password)) {
                 let token = jwt.sign(user.toJSON(), secret.secret);
-                res.json({ succes: true, token: "JWT " + token });
+                res.json({ success: true, token: "JWT " + token });
             }
             else {
-                res.json({ succes: false, message: "Authentication failed" })
+                res.json({ success: false, message: "Authentication failed" })
             }
         }
     })

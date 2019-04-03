@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import { Container, Row } from "../../components/Grid/index";
 import Login from "../../components/Login/Login"
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
+import axios from "axios"
 
 class Signup extends Component {
 
@@ -13,7 +15,8 @@ class Signup extends Component {
         email: "",
         password: "",
         subject: "",
-        subjects: []
+        subjects: [],
+        success: false
     }
 
     signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
@@ -59,17 +62,16 @@ class Signup extends Component {
         }
     }
 
-    loginOnClick = (email, password) => {
-        API.logIn({
-            email: email,
-            password: password
-        })
-            .then(res => {
-                console.log(res)
+    loginOnClick = () => {
+
+        const { email, password } = this.state
+        axios.post("/login", { email, password })
+            .then((res) => {
+                console.log(res.data)
+                localStorage.setItem("jwtToken", res.data.token);
                 this.setState({
-                    email: "",
-                    password: ""
-                })
+                    success: res.data.success
+                });
             })
             .catch(err => console.log(err))
     }
@@ -87,32 +89,37 @@ class Signup extends Component {
     };
 
     render() {
-        return (
-            <Container>
-                <Row>
-                    <Login
-                        email={this.state.email}
-                        password={this.state.password}
-                        handleInputChange={this.handleInputChange}
-                        loginOnClick={this.loginOnClick}
-                    />
-                </Row>
-                <Row>
-                    <SignUpForm
-                        userType={this.state.userType}
-                        firstName={this.state.firstName}
-                        lastName={this.state.lastName}
-                        email={this.state.email}
-                        password={this.state.password}
-                        subject={this.state.subject}
-                        subjects={this.state.subjects}
-                        handleInputChange={this.handleInputChange}
-                        signUpOnClick={this.signUpOnClick}
-                        pushSubject={this.pushSubject}
-                    />
-                </Row>
-            </Container>
-        )
+        if (this.state.success
+        ) {
+            return (<Redirect to="/" />)
+        } else {
+            return (
+                <Container>
+                    <Row>
+                        <Login
+                            email={this.state.email}
+                            password={this.state.password}
+                            handleInputChange={this.handleInputChange}
+                            loginOnClick={this.loginOnClick}
+                        />
+                    </Row>
+                    <Row>
+                        <SignUpForm
+                            userType={this.state.userType}
+                            firstName={this.state.firstName}
+                            lastName={this.state.lastName}
+                            email={this.state.email}
+                            password={this.state.password}
+                            subject={this.state.subject}
+                            subjects={this.state.subjects}
+                            handleInputChange={this.handleInputChange}
+                            signUpOnClick={this.signUpOnClick}
+                            pushSubject={this.pushSubject}
+                        />
+                    </Row>
+                </Container>
+            )
+        }
     }
 }
 

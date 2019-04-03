@@ -11,23 +11,23 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     findRandoms: function (req, res) {
-        console.log('hit')
+        // console.log('hit')
         db.Tutor
         .find({})
         .then(dbModel => {
-            console.log('success')
+            // console.log('success')
             const newRandomTutors = [];
             const usedRandVals = [];
-            console.log(newRandomTutors);
+            // console.log(newRandomTutors);
             while(newRandomTutors.length < 6){
                 const newRandVal = findRandomVal(dbModel);
-                console.log(newRandVal);
+                // console.log(newRandVal);
                 if(usedRandVals.indexOf(newRandVal) === -1){
                     newRandomTutors.push(dbModel[newRandVal]);
                     usedRandVals.push(newRandVal);
                 }
             }
-            console.log(newRandomTutors);
+            // console.log(newRandomTutors);
             res.json(newRandomTutors);
         })
         .catch(err => res.status(422).json(err));
