@@ -65,6 +65,7 @@ class Signup extends Component {
             password: password
         })
             .then(res => {
+                console.log(res)
                 this.setState({
                     email: "",
                     password: ""
