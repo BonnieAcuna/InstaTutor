@@ -2,45 +2,36 @@ const router = require("express").Router();
 const Tutor = require("../../models/Tutor");
 const User = require("../../models/User");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
+const secret = require("../../config/secret");
+const jwt = require('jsonwebtoken');
+
+// Validate password
+var comparePassword = function (typedPassword, password) {
+    return bcrypt.compareSync(typedPassword, password)
+}
 
 router.route("/")
     .post((req, res, next) => {
         User.findOne({ email: req.body.email })
-            .exec()
-            .then(user => {
-                if (user === null) {
-                    Tutor.findOne({ email: req.body.email })
-                        .then(tutor => {
-                            if (tutor === null) {
-                                return res.status(401).json({
-                                    message: "Auth failed"
-                                })
-                            }
-                            bcrypt.compare(req.body.password, tutor.password, (err, result) => {
-                                if (err) {
-                                    return res.status(401).json({
-                                        message: "Auth Failed"
-                                    });
-                                }
-                                if (result) {
-                                    console.log("loged In as Tutor")
-                                }
-                            })
-                        })
-                        .catch(err => console.log(err))
-                }
-                bcrypt.compare(req.body.password, user.password, (err, result) => {
-                    if (err) {
-                        return res.status(401).json({
-                            message: "Auth Failed"
-                        });
-                    }
-                    if (result) {
-                        console.log("loged In as User")
-                    }
-                })
-            })
-            .catch(err => console.log(err))
-    });
+    
+    .exec()
+    .then(user => {
+        if (!user) {
+            res.send({ success: false, message: "Authentication failed" });
+            console.log("no user")
+        }
+        else {
+            if (comparePassword(req.body.password, user.password)) {
+                let token = jwt.sign(user.toJSON(), secret.secret);
+                res.json({ success: true, token: "JWT " + token });
+            }
+            else {
+                res.json({ success: false, message: "Authentication failed" })
+            }
+        }
+    })
+    .catch(err => console.log(err))
+})
 
-module.exports = router;
+module.exports = router

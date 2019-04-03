@@ -4,6 +4,10 @@ const routes = require("./routes");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const passport = require("passport")
+
+//passport config
+require("./config/passport")(passport)
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +16,10 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+//Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Define API routes here
 app.use(routes);
@@ -24,5 +32,5 @@ app.get("*", (req, res) => {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instaTutor", { useNewUrlParser: true });
 
 app.listen(PORT, () => {
-  console.log("server listening on http://localhost:" + PORT );
+  console.log("server listening on http://localhost:" + PORT);
 });
