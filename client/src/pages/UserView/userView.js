@@ -20,23 +20,39 @@ class UserView extends Component {
         this.loadTutor("")
     };
 
+    renderTutor () {
+        if (Object.values(this.state.tutor).length > 1){
+            return(
+                <div>
+                    {this.state.tutor.firstName}
+                    {this.state.tutor.lastName}
+                    {this.state.tutor.email}
+                  <img src={this.state.tutor.image}/>
+                  {this.state.tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                </div>
+            )
+        }
+        return;
+    }
+
     loadTutor() {
         //this.props.params.url call is passed here
         console.log(this.props.match.params.userid)
         API.getTutor(this.props.match.params.userid)
         .then(res=> {
             console.log(res.data)
-            // this.setState({})
+            this.setState({ tutor:res.data })
             
         })
         .catch(err=> console.log(err));
     }
 
     render() {
+        console.log("This is the UserView", this.state); 
         return (
             <Container>
                 <Row>
-                    Yay
+                    {this.renderTutor()}
                 </Row>
             </Container>
         )
