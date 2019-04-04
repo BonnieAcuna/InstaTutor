@@ -7,7 +7,8 @@ import FeaturedTutors from "../FeaturedTutors/FeaturedTutors";
 class Search extends Component {
     state = {
         search: "",
-        tutors: []
+        tutors: [],
+        hasSearched: false
     }
 
     loadTutors = (query) => {
@@ -24,7 +25,8 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.loadTutors(this.state.search)
+        this.loadTutors(this.state.search);
+        this.setState({hasSearched: true});
     };
 
 
@@ -39,7 +41,7 @@ class Search extends Component {
                   image={tutor.image}
                   subjects={tutor.subjects}
                 />
-            ))} else {
+            ))} else if(this.state.hasSearched) {
                 return <div  className="noResults">No Results Found!</div>;
             };
     };
