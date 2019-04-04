@@ -12,23 +12,28 @@ import API from "../../utils/API";
 class UserView extends Component {
 
     state = {
-        tutor: []
+        tutorId: null,
+        tutor: {}
         //possibly do object instead of array
     };
 
     componentDidMount(){
-        this.loadTutor("")
+        this.loadTutor()
     };
+    
+    componentDidUpdate(){
+        this.loadTutor()
+    }
 
-    renderTutor () {
-        if (Object.values(this.state.tutor).length > 1){
+    renderTutor (tutor) {
+        if (Object.values(tutor).length > 1){
             return(
                 <div>
-                    {this.state.tutor.firstName}
-                    {this.state.tutor.lastName}
-                    {this.state.tutor.email}
-                  <img src={this.state.tutor.image}/>
-                  {this.state.tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                    {tutor.firstName}
+                    {tutor.lastName}
+                    {tutor.email}
+                  <img src={tutor.image}/>
+                  {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
                 </div>
             )
         }
@@ -36,23 +41,24 @@ class UserView extends Component {
     }
 
     loadTutor() {
-        //this.props.params.url call is passed here
-        console.log(this.props.match.params.userid)
-        API.getTutor(this.props.match.params.userid)
-        .then(res=> {
-            console.log(res.data)
-            this.setState({ tutor:res.data })
-            
-        })
-        .catch(err=> console.log(err));
+        if(this.state.tutorId !== this.props.match.params.userid){
+            API.getTutor(this.props.match.params.userid)
+            .then(res=> {
+                this.setState({ 
+                    tutor:res.data,
+                    tutorId: this.props.match.params.userid 
+                })
+            })
+            .catch(err=> console.log(err));
+        }
     }
 
     render() {
-        console.log("This is the UserView", this.state); 
+        
         return (
             <Container>
                 <Row>
-                    {this.renderTutor()}
+                    {this.renderTutor(this.state.tutor)}
                 </Row>
             </Container>
         )
