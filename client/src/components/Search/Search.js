@@ -27,6 +27,23 @@ class Search extends Component {
         this.loadTutors(this.state.search)
     };
 
+
+    renderSearchedTutors() {
+        // if no results then show no results found
+        if (this.state.tutors.length !== 0){
+            return this.state.tutors.map((tutor, index) => (
+                <FeaturedTutors
+                  id={tutor.id}
+                  key={index}
+                  name={tutor.firstName + " " + tutor.lastName}  
+                  image={tutor.image}
+                  subjects={tutor.subjects}
+                />
+            ))} else {
+                return <div  className="noResults">No Results Found!</div>;
+            };
+    };
+
     render() {
         return (
             <div className="searchContainer">
@@ -44,28 +61,20 @@ class Search extends Component {
                     <Col size="md-2">
                     </Col>
                     <Col size="md-8">
-                        <form className="form-inline">
+                        <form className="form-inline" onSubmit={this.handleFormSubmit}>
                             <div className="inputForm">
-                                <input className="form-control" type="text" placeholder="Math, Science, History..." name="search" value={this.state.search} onChange={this.handleInputChange}></input>
+                                <input className="form-control" type="text" placeholder="Math, Science, History..." name="search" value={this.state.search} onChange={this.handleInputChange} required></input>
                             </div>
-                            <button type="submit" className="btn btn-light submitbtn ml-3" onClick={this.handleFormSubmit}>Submit</button>
+                            <button type="submit" className="btn btn-light submitbtn ml-3">Submit</button>
                         </form>
                     </Col>
                     <Col size="md-2">
                     </Col>
                 </Row>
             <Container>
-            <Row>
-           {this.state.tutors.map((tutor, index) => (
-          <FeaturedTutors
-            id={tutor.id}
-            key={index}
-            name={tutor.firstName + "" + tutor.lastName}  
-            image={tutor.image}
-            subjects={tutor.subjects}
-          />
-        ))}
-        </Row>
+                <Row>
+                    {this.renderSearchedTutors()}
+                </Row>
             </Container>
             </div>
         )

@@ -39,9 +39,10 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     findBySubject: function(req, res){
+        let str = `.*${req.params.query}.*`
+        let reg = new RegExp(str, "gi")
         db.Tutor
-        .find({subjects: {$in: [req.params.query]}})
-        .collation( { locale: 'en_US', strength: 1 } )
+        .find({subjects: {$in: [ reg ]}})
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
