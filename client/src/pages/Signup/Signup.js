@@ -20,52 +20,32 @@ class Signup extends Component {
     }
 
     signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
-        if (userType === "tutor") {
-            API.createTutor({
-                firstName: firstName,
-                lastName: lastName,
-                subjects: subjects,
-                email: email,
-                password: password,
-            })
-                .then(res => {
-                    this.setState({
-                        userType: "",
-                        firstName: "",
-                        lastName: "",
-                        email: "",
-                        password: "",
-                        subject: "",
-                        subjects: []
-                    })
+        API.createUser({
+            userType: userType,
+            firstName: firstName,
+            lastName: lastName,
+            subjects: subjects,
+            email: email,
+            password: password,
+        })
+            .then(res => {
+                this.setState({
+                    userType: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    subject: "",
+                    subjects: []
                 })
-                .catch(err => console.log(err));
-        } else {
-            API.createUser({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password,
             })
-                .then(res => {
-                    this.setState({
-                        userType: "",
-                        firstName: "",
-                        lastName: "",
-                        email: "",
-                        password: "",
-                        subject: "",
-                        subjects: []
-                    })
-                })
-                .catch(err => console.log(err))
-        }
+            .catch(err => console.log(err));
     }
 
-    loginOnClick = () => {
 
+    loginOnClick = () => {
         const { email, password } = this.state
-        axios.post("/login", { email, password })
+        axios.post("/auth/login", { email, password })
             .then((res) => {
                 console.log(res.data)
                 localStorage.setItem("jwtToken", res.data.token);
@@ -89,8 +69,7 @@ class Signup extends Component {
     };
 
     render() {
-        if (this.state.success
-        ) {
+        if (this.state.success) {
             return (<Redirect to="/" />)
         } else {
             return (
