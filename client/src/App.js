@@ -19,7 +19,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          {/* <Search /> */}
+         
           <Features />
 
           
@@ -27,6 +27,7 @@ class App extends Component {
             <Route exact path="/" component={Body} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/user/:userid" component={UserView} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route component={NoMatch} />
           </Switch>
            <Footer />
