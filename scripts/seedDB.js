@@ -1,146 +1,208 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("../models/AllUsers");
 
 mongoose.connect(
     process.env.MONGODB_URI ||
     "mongodb://localhost/instaTutor"
 );
 
-const tutorSeed = [
+const allUsersSeed = [
     {
+        userType: "tutor",
         firstName: "John",
         lastName: "Smith",
+        email: "jsmith@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["React", "HTML", "CSS", "Bootstrap"],
-        email: "jsmith@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Jane",
         lastName: "Gomez",
+        email: "jgomez@gmail.com",
+        password: "password",
         image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Javascript", "Python"],
-        email: "jgomez@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Bill",
         lastName: "Jones",
+        email: "bjones@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Math", "Finance", "Economics"],
-        email: "bjones@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Lawrence",
         lastName: "Morrison",
+        email: "lmorrison@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Physics"],
-        email: "lmorrison@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Justin",
         lastName: "Benton",
+        email: "jbenton@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Algebra", "Math"],
-        email: "jbenton@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Vance",
         lastName: "Gallagher",
+        email: "vgallagher@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["History", "Algebra"],
-        email: "vgallagher@gmail.com",
-        password: "password"
+        featured: true
     },
     {
-
+        userType: "tutor",
         firstName: "Matt",
         lastName: "James",
+        email: "mjames@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Chemistry", "Biology"],
-        email: "mjames@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Jennifer",
         lastName: "Simpson",
+        email: "jsimpson@gmail.com",
+        passord: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Physics", "World History"],
-        email: "jsimpson@gmail.com",
-        passord: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Chloe",
         lastName: "Cameron",
+        email: "ccameron@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Geometry"],
-        email: "ccameron@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Emily",
         lastName: "Wilkinson",
+        email: "ewilkinson@gmail.com",
+        password: "password",
         image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Javascript", "Python"],
-        email: "ewilkinson@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Jason",
         lastName: "Brown",
+        email: "jbrown@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Chemestry"],
-        email: "jbrown@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Greg",
         lastName: "Williams",
+        email: "gwilliams@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Economics", "Math"],
-        email: "gwilliams@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Jose",
         lastName: "Madueno",
+        email: "jmadueno@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Latin America Studies", "Mexican History", "History"],
-        email: "jmadueno@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Michaela",
         lastName: "Johnson",
+        email: "mjohnson@gmail.com",
+        password: "password",
         image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["History", "Italian"],
-        email: "mjohnson@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Marcia",
         lastName: "Jones",
+        email: "mjones@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["English", "Writing I"],
-        email: "mjones@gmail.com",
-        password: "password"
+        featured: true
     },
     {
+        userType: "tutor",
         firstName: "Angela",
         lastName: "Marquez",
+        email: "amarquez@gmail.com",
+        password: "password",
         image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
         subjects: ["Spanish I", "Spanish II"],
-        email: "amarquez@gmail.com",
-        password: "password"
+        featured: true
+    },
+    {
+        userType: "user",
+        firstName: "Jake",
+        lastName: "Gonzales",
+        email: "jg@gmail.com",
+        password: "password",
+        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+    },
+    {
+        userType: "user",
+        firstName: "Michael",
+        lastName: "Johansen",
+        email: "mj@gmail.com",
+        password: "password",
+        image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+    },
+    {
+        userType: "user",
+        firstName: "Maria",
+        lastName: "Mendez",
+        email: "mm@gmail.com",
+        password: "password",
+        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+    },
+    {
+        userType: "user",
+        firstName: "Carlos",
+        lastName: "Perez",
+        email: "cp@gmail.com",
+        password: "password",
+        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
     }
 ]
 
-db.Tutor
-    .remove({})
-    .then(() => db.Tutor.collection.insertMany(tutorSeed))
+db.remove({})
+    .then(() => db.collection.insertMany(allUsersSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
