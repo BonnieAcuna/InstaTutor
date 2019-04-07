@@ -16,6 +16,7 @@ class App extends Component {
     user: {},
     email: "",
     password: "",
+    loggedIn: false
   }
 
   updateUser = () => {
@@ -23,7 +24,8 @@ class App extends Component {
       .then((res) => {
         console.log(res.data)
         this.setState({
-          user: res.data.user
+          user: res.data.user,
+          loggedIn: true
         })
       })
       .catch(err => {
@@ -37,12 +39,27 @@ class App extends Component {
       .then((res) => {
         console.log(res.data)
         localStorage.setItem("jwtToken", res.data.token);
-        this.setState({
-          success: res.data.success
-        });
+        // this.setState({
+        //   success: res.data.success
+        // });
       })
       .catch(err => console.log(err))
   }
+
+  logOutOnClick = () => {
+    axios.get("/auth/logout")
+      .then( res =>{
+        localStorage.removeItem("jwtToken");
+        this.setState({
+          user:{},
+          loggedIn: false
+        });
+        window.location.reload();
+      })
+      .catch(err=>{
+        console.log(err)
+      });
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -59,8 +76,10 @@ class App extends Component {
             user={this.state.user}
             email={this.state.email}
             password={this.state.password}
+            loggedIn={this.state.loggedIn}
             handleInputChange={this.handleInputChange}
             loginOnClick={this.loginOnClick}
+            logOutOnClick={this.logOutOnClick}
           />
           <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} />
           <Switch>
