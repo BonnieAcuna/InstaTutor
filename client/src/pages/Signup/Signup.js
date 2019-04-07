@@ -75,14 +75,8 @@ class Signup extends Component {
             return (
                 <Container>
                     <Row>
-                        <Login
-                            email={this.state.email}
-                            password={this.state.password}
-                            handleInputChange={this.handleInputChange}
-                            loginOnClick={this.loginOnClick}
-                        />
-                    </Row>
-                    <Row>
+                
+                    
                         <SignUpForm
                             userType={this.state.userType}
                             firstName={this.state.firstName}

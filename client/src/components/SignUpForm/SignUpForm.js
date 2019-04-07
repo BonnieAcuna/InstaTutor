@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row } from "../../components/Grid/index";
-import { Input } from "../Form/index";
 import TutorSubjects from "../TutorSubjects/TutorSubjects"
 
 export default function SignUpForm(props) {
@@ -20,7 +19,7 @@ export default function SignUpForm(props) {
                 <Row>
                     <div className="form-row">
                         <div className="ml-3 mt-2 mr-1">
-                            <Input
+                            <input
                                 value={props.firstName}
                                 onChange={props.handleInputChange}
                                 name="firstName"
@@ -28,7 +27,7 @@ export default function SignUpForm(props) {
                             />
                         </div>
                         <div className="mt-2">
-                            <Input
+                            <input
                                 value={props.lastName}
                                 onChange={props.handleInputChange}
                                 name="lastName"
@@ -39,7 +38,7 @@ export default function SignUpForm(props) {
                 </Row>
                 <Row>
                     <div className="col-12">
-                        <Input
+                        <input
                             value={props.email}
                             onChange={props.handleInputChange}
                             name="email"
@@ -49,7 +48,7 @@ export default function SignUpForm(props) {
                 </Row>
                 <Row>
                     <div className="col-12">
-                        <Input
+                        <input
                             type= "password"
                             value={props.password}
                             onChange={props.handleInputChange}
