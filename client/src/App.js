@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/index.js";
-// import Search from "../src/components/Search/index.js";
 import Signup from "./pages/Signup/Signup";
 import Footer from "./components/Footer/Footer";
 import UserView from "./pages/UserView/userView";
@@ -21,7 +20,6 @@ class App extends Component {
   }
 
   updateUser = () => {
-    // console.log('Running Update')
     API.getCurrentUser()
       .then((res) => {
         console.log(res.data)
@@ -83,13 +81,12 @@ class App extends Component {
             loginOnClick={this.loginOnClick}
             logOutOnClick={this.logOutOnClick}
           />
-
           <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} />
-
           <Switch>
             <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/user/:userid" component={UserView} />
+            <Route exact path="/dashboard" component={Dashboard} />
             <Route component={NoMatch} />
           </Switch>
           <Footer />
