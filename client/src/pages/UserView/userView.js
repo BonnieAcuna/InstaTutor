@@ -34,7 +34,9 @@ class UserView extends Component {
                     {tutor.firstName}
                     {tutor.lastName}
                     {tutor.email}
+
                   <img src={tutor.image} alt="tutor"/>
+
                   {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
                   </div>
                 </div>

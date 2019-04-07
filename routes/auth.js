@@ -7,8 +7,6 @@ var passport = require('passport');
 var secret = require('../config/secret');
 require('../config/passport')(passport);
 
-
-
 // Validate password
 var comparePassword = function (typedPassword, password) {
     return bcrypt.compareSync(typedPassword, password)
@@ -57,29 +55,33 @@ router.post("/register", (req, res) => {
                 })
             }
         })
-}); 
+});
 
-    //Login route
-    router.post("/login", (req, res) => {
-        AllUsers.findOne({ email: req.body.email })
-            .then(user => {
-                if (!user) {
-                    res.send({ success: false, message: "Authentication failed user not found." });
-                    console.log("no user");
-                } else {
-                    // check if password match db
-                    if (comparePassword(req.body.password, user.password)) {
-                            // create a JWT Token if password matched
-                        let token = jwt.sign(user.toJSON(), secret.secret);
-                            // return the information including jwt token as json
-                        res.json({ success: true, token: "JWT " + token });
-                    }
-                    else {
-                        res.json({ success: false, message: "Authentication failed" })
-                    }
+//Login route
+router.post("/login", (req, res) => {
+    // example with headers object
+    console.log(req.headers);
+    AllUsers.findOne({ email: req.body.email })
+        .then(user => {
+            if (!user) {
+                res.send({ success: false, message: "Authentication failed user not found." });
+                console.log("no user");
+            } else {
+                // check if password match db
+                if (comparePassword(req.body.password, user.password)) {
+                    // create a JWT Token if password matched
+                    let token = jwt.sign(user.toJSON(), secret.secret);
+                    // return the information including jwt token as json
+                    res.json({ success: true, token: "JWT " + token });
                 }
-            })
-            .catch(err => console.log(err))
-    });
+                else {
+                    res.json({ success: false, message: "Authentication failed" })
+                }
+            }
+        })
+        .catch(err => console.log(err))
+});
+
+router.get("/logout")
 
 module.exports = router;
