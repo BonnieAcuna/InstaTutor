@@ -8,6 +8,7 @@ import Features from "./components/Features";
 import Body from "./pages/Body";
 import NoMatch from "./pages/NoMatch/index";
 import axios from "axios"
+import Dashboard from "./pages/Dashboard/index"
 
 import API from './utils/API';
 
