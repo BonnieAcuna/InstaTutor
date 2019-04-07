@@ -28,7 +28,10 @@ function Nav(props) {
             loginOnClick={props.loginOnClick}
           />
         }
-
+      </div>
+      <div className="d-flex flex-row-reverse bd-highlight">
+        {(props.loggedIn) ? <div><button className="btn btn-danger"  style={{ float: "right", marginBottom: "40px", marginLeft: "30px" }} onClick={props.logOutOnClick}>Log Out</button></div>:
+          <div></div>}
       </div>
     </nav>
   );

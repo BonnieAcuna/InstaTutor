@@ -59,7 +59,6 @@ router.post("/register", (req, res) => {
 
 //Login route
 router.post("/login", (req, res) => {
-
     // example with headers object
     console.log(req.headers);
     AllUsers.findOne({ email: req.body.email })
@@ -82,5 +81,7 @@ router.post("/login", (req, res) => {
         })
         .catch(err => console.log(err))
 });
+
+router.get("/logout")
 
 module.exports = router;

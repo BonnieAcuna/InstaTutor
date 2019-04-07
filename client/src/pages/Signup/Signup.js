@@ -69,12 +69,9 @@ class Signup extends Component {
     };
 
     render() {
-        if (this.state.success) {
-            return (<Redirect to="/" />)
-        } else {
-            return (
-                <Container>
-                    {/* <Row>
+        return (
+            <Container>
+                {/* <Row>
                         <Login
                             email={this.state.email}
                             password={this.state.password}
@@ -82,24 +79,24 @@ class Signup extends Component {
                             loginOnClick={this.loginOnClick}
                         />
                     </Row> */}
-                    <Row>
-                        <SignUpForm
-                            userType={this.state.userType}
-                            firstName={this.state.firstName}
-                            lastName={this.state.lastName}
-                            email={this.state.email}
-                            password={this.state.password}
-                            subject={this.state.subject}
-                            subjects={this.state.subjects}
-                            handleInputChange={this.handleInputChange}
-                            signUpOnClick={this.signUpOnClick}
-                            pushSubject={this.pushSubject}
-                        />
-                    </Row>
-                </Container>
-            )
-        }
+                <Row>
+                    <SignUpForm
+                        userType={this.state.userType}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
+                        email={this.state.email}
+                        password={this.state.password}
+                        subject={this.state.subject}
+                        subjects={this.state.subjects}
+                        handleInputChange={this.handleInputChange}
+                        signUpOnClick={this.signUpOnClick}
+                        pushSubject={this.pushSubject}
+                    />
+                </Row>
+            </Container>
+        )
     }
 }
+
 
 export default Signup;
