@@ -4,32 +4,77 @@ import Navbar from "./components/Navbar/index.js";
 // import Search from "../src/components/Search/index.js";
 import Signup from "./pages/Signup/Signup";
 import Footer from "./components/Footer/Footer";
-import UserView from "./pages/UserView/userView"
+import UserView from "./pages/UserView/userView";
 import Features from "./components/Features";
 import Body from "./pages/Body";
 import NoMatch from "./pages/NoMatch/index";
+import axios from "axios"
 
+import API from './utils/API';
 
 class App extends Component {
+  state = {
+    user: {},
+    email: "",
+    password: "",
+  }
 
+  updateUser = () => {
+    // console.log('Running Update')
+    API.getCurrentUser()
+      .then((res) => {
+        console.log(res.data)
+        this.setState({
+          user: res.data.user
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
-  
+  loginOnClick = () => {
+    const { email, password } = this.state
+    axios.post("/auth/login", { email, password })
+      .then((res) => {
+        console.log(res.data)
+        localStorage.setItem("jwtToken", res.data.token);
+        this.setState({
+          success: res.data.success
+        });
+      })
+      .catch(err => console.log(err))
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
   render() {
     return (
       <Router>
         <div>
-          <Navbar />
-          {/* <Search /> */}
-          <Features />
+          <Navbar
+            user={this.state.user}
+            email={this.state.email}
+            password={this.state.password}
+            handleInputChange={this.handleInputChange}
+            loginOnClick={this.loginOnClick}
+          />
 
-          
+          <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} />
+
+
           <Switch>
-            <Route exact path="/" component={Body} />
+            <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/user/:userid" component={UserView} />
             <Route component={NoMatch} />
           </Switch>
-           <Footer />
+          <Footer />
         </div>
       </Router>
     );

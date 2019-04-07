@@ -4,16 +4,21 @@ import "./style.scss";
 import Search from "../../components/Search/Search"
 
 
-function Body() {
-    return (
+class Body extends React.Component {
+    componentDidMount(){
+        this.props.updateUser();
+    }
+    render(){
+        return (
+            
+            <div className="bgImage">
+            
+            <Search />  
         
-        <div className="bgImage">
-        
-        <Search />  
-       
-            </div>
-        
-    )
+                </div>
+            
+        )
+    }
 }
 
 export default Body;

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import { Container, Row } from "../../components/Grid/index";
-import Login from "../../components/Login/Login"
+// import Login from "../../components/Login/Login"
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
-import axios from "axios"
+// import axios from "axios"
 
 class Signup extends Component {
 
@@ -43,18 +43,18 @@ class Signup extends Component {
     }
 
 
-    loginOnClick = () => {
-        const { email, password } = this.state
-        axios.post("/auth/login", { email, password })
-            .then((res) => {
-                console.log(res.data)
-                localStorage.setItem("jwtToken", res.data.token);
-                this.setState({
-                    success: res.data.success
-                });
-            })
-            .catch(err => console.log(err))
-    }
+    // loginOnClick = () => {
+    //     const { email, password } = this.state
+    //     axios.post("/auth/login", { email, password })
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             localStorage.setItem("jwtToken", res.data.token);
+    //             this.setState({
+    //                 success: res.data.success
+    //             });
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     pushSubject = (subject) => {
         this.setState({ subjects: [...this.state.subjects, subject] });
@@ -74,14 +74,14 @@ class Signup extends Component {
         } else {
             return (
                 <Container>
-                    <Row>
+                    {/* <Row>
                         <Login
                             email={this.state.email}
                             password={this.state.password}
                             handleInputChange={this.handleInputChange}
                             loginOnClick={this.loginOnClick}
                         />
-                    </Row>
+                    </Row> */}
                     <Row>
                         <SignUpForm
                             userType={this.state.userType}
