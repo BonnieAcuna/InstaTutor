@@ -18,35 +18,46 @@ class Signup extends Component {
     success: false
   };
 
-  signUpOnClick = (
-    userType,
-    firstName,
-    lastName,
-    email,
-    password,
-    subjects
-  ) => {
-    API.createUser({
-      userType: userType,
-      firstName: firstName,
-      lastName: lastName,
-      subjects: subjects,
-      email: email,
-      password: password
-    })
-      .then(res => {
-        this.setState({
-          userType: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          subject: "",
-          subjects: []
-        });
-      })
-      .catch(err => console.log(err));
-  };
+
+    state = {
+        userType: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        subject: "",
+        subjects: [],
+        success: false
+    }
+
+    signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
+        API.createUser({
+            userType: userType,
+            firstName: firstName,
+            lastName: lastName,
+            subjects: subjects,
+            email: email,
+            password: password,
+        })
+            .then(res => {
+                this.setState({
+                    userType: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    subject: "",
+                    subjects: []
+                })
+            })
+            .catch(err => console.log(err));
+    }
+
+    pushSubject = (subject) => {
+        this.setState({ subjects: [...this.state.subjects, subject] });
+        this.setState({ subject: "" })
+    };
+
 
   loginOnClick = () => {
     const { email, password } = this.state;
@@ -67,45 +78,26 @@ class Signup extends Component {
     this.setState({ subject: "" });
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+    render() {
+        return (
+            <Container>
+                <Row>
+                    <SignUpForm
+                        userType={this.state.userType}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
+                        email={this.state.email}
+                        password={this.state.password}
+                        subject={this.state.subject}
+                        subjects={this.state.subjects}
+                        handleInputChange={this.handleInputChange}
+                        signUpOnClick={this.signUpOnClick}
+                        pushSubject={this.pushSubject}
+                    />
+                </Row>
+            </Container>
+        )
 
-  render() {
-    if (this.state.success) {
-      return <Redirect to="/" />;
-    } else {
-      return (
-        <div className="container">
-          <div className="row">
-            {/* <div className="col-md-4 float-left">
-              <Login
-                email={this.state.email}
-                password={this.state.password}
-                handleInputChange={this.handleInputChange}
-                loginOnClick={this.loginOnClick}
-              />
-            </div> */}
-            <div className="col-md-8 mx-auto">
-              <SignUpForm
-                userType={this.state.userType}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                email={this.state.email}
-                password={this.state.password}
-                subject={this.state.subject}
-                subjects={this.state.subjects}
-                handleInputChange={this.handleInputChange}
-                signUpOnClick={this.signUpOnClick}
-                pushSubject={this.pushSubject}
-              />
-            </div>
-          </div>
-        </div>
-      );
     }
   }
 }
