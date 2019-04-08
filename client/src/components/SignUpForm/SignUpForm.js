@@ -12,8 +12,8 @@ export default function SignUpForm(props) {
                     <h4>Sign up as:</h4>
                 </div>
                 <form id="userTypeId" className="ml-4">
-                    <input type="radio" name="userType" value="tutor" onChange={props.handleInputChange}/> Tutor
-                    <input type="radio" name="userType" value="user" className="ml-4" onChange={props.handleInputChange}/> User
+                    <input type="radio" name="userType" value="tutor" onChange={props.handleInputChange} /> Tutor
+                    <input type="radio" name="userType" value="user" className="ml-4" onChange={props.handleInputChange} /> User
                 </form>
             </Row>
             <form>
@@ -50,7 +50,7 @@ export default function SignUpForm(props) {
                 <Row>
                     <div className="col-12">
                         <Input
-                            type= "password"
+                            type="password"
                             value={props.password}
                             onChange={props.handleInputChange}
                             name="password"
@@ -59,15 +59,20 @@ export default function SignUpForm(props) {
                     </div>
                 </Row>
                 <Row>
-                    <TutorSubjects 
-                        subject= {props.subject}
-                        subjects= {props.subjects}
-                        handleInputChange= {props.handleInputChange}
+                    <TutorSubjects
+                        subject={props.subject}
+                        subjects={props.subjects}
+                        handleInputChange={props.handleInputChange}
                         pushSubject={props.pushSubject}
                     />
                 </Row>
-                <button type="button" className="btn btn-primary mt-2 float-right" onClick={() => props.signUpOnClick(props.userType, props.firstName, props.lastName, props.email, props.password, props.subjects, props.subject,)}>Sign Up</button>
+                <div className="form-group">
+                    <label>label</label>
+                    <input type="file" id="upload" name={"image"}></input>
+                </div>
+            
+            <button type="button" className="btn btn-primary mt-2 float-right" onClick={() => props.signUpOnClick(props.userType, props.firstName, props.lastName, props.email, props.password, props.subjects, props.subject)}>Sign Up</button>
             </form>
-        </div>
+        </div >
     )
 }
