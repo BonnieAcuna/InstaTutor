@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import Profile from "../../components/Profile/index";
 import { Container, Row } from "../../components/Grid/index";
 import API from "../../utils/API";
@@ -52,4 +53,22 @@ class Dashboard extends Component {
 
 }
 
+=======
+
+class Dashboard extends Component {
+
+    state = {
+
+    }
+
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+}
+
+>>>>>>> 0a2d02583ae998060bff018b04b1fa306abadb90
 export default Dashboard;

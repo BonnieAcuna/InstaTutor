@@ -10,7 +10,12 @@ class Features extends React.Component {
  
   componentDidMount() {
     this.tutorCard();
-}
+  }
+  componentDidUpdate(){
+    if(this.state.tutors.length === 0){
+      this.tutorCard();
+    }
+  }
   tutorCard = () => {
     console.log("HIT")
     API.getTutors() 

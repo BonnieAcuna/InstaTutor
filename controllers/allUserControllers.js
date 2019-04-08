@@ -4,13 +4,19 @@ const findRandomVal = arr => Math.floor(Math.random() * arr.length);
 
 module.exports = {
     findAll: (req, res) => {
+        console.log('Controller Data')
         db.find({})
             .sort({ date: -1 })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log(err)
+                res.status(422).json(err)
+            });
     },
     findRandoms: function (req, res) {
-        // console.log('hit')
+        console.log("---------------------------------------")
+        console.log(req.user)
+        console.log('hit')
         db.find({userType : "tutor"})
             .then(dbModel => {
                 // console.log('success')
@@ -34,6 +40,11 @@ module.exports = {
         db.findById(req.params.id)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
+    },
+    findLoggedInUser: function(req, res){
+        let user = req.user;
+        user.password = null;
+        res.json({user});
     },
     findBySubject: function(req, res){
         let str = `.*${req.params.query}.*`

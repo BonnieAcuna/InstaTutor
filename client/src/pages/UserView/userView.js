@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import { Container, Row } from "../../components/Grid/index";
 import API from "../../utils/API";
+import "./style.scss";
 //import TutorView from "../profile/:theirId"
 //Check DB if user is logged in (1) or not (0)
 //this.props.params.url within my ajax call
@@ -28,12 +29,16 @@ class UserView extends Component {
     renderTutor (tutor) {
         if (Object.values(tutor).length > 1){
             return(
-                <div>
+                <div className="container tutorView">
+                    <div className="col-md-8 mx-auto">
                     {tutor.firstName}
                     {tutor.lastName}
                     {tutor.email}
-                  <img src={tutor.image}/>
+
+                  <img src={tutor.image} alt="tutor"/>
+
                   {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                  </div>
                 </div>
             )
         }
