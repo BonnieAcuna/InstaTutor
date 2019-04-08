@@ -42,20 +42,6 @@ class Signup extends Component {
             .catch(err => console.log(err));
     }
 
-
-    // loginOnClick = () => {
-    //     const { email, password } = this.state
-    //     axios.post("/auth/login", { email, password })
-    //         .then((res) => {
-    //             console.log(res.data)
-    //             localStorage.setItem("jwtToken", res.data.token);
-    //             this.setState({
-    //                 success: res.data.success
-    //             });
-    //         })
-    //         .catch(err => console.log(err))
-    // }
-
     pushSubject = (subject) => {
         this.setState({ subjects: [...this.state.subjects, subject] });
         this.setState({ subject: "" })
@@ -71,14 +57,6 @@ class Signup extends Component {
     render() {
         return (
             <Container>
-                {/* <Row>
-                        <Login
-                            email={this.state.email}
-                            password={this.state.password}
-                            handleInputChange={this.handleInputChange}
-                            loginOnClick={this.loginOnClick}
-                        />
-                    </Row> */}
                 <Row>
                     <SignUpForm
                         userType={this.state.userType}
