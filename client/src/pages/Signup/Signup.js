@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-//import { Container, Row } from "../../components/Grid/index";
+import { Container, Row } from "../../components/Grid/index";
 //import Login from "../../components/Login/Login";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
@@ -99,7 +99,7 @@ class Signup extends Component {
         )
 
     }
-  }
+  
 }
 
 export default Signup;
