@@ -17,6 +17,9 @@ function Nav(props) {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
           <Link className="nav-item nav-link active" to="/">Home <span className="sr-only">(current)</span></Link>
+          {(props.user.firstName) ? <div></div> :
+          <Link className="nav-item nav-link active" to="/signup">Sign up <span className="sr-only">(current)</span></Link>
+          }
         </div>
       </div>
       <div className="d-flex flex-row-reverse bd-highlight">
