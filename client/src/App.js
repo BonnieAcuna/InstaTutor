@@ -12,7 +12,6 @@ import axios from "axios"
 // import Dashboard from "./pages/Dashboard/index"
 
 import API from './utils/API';
-import Dashboard from "./pages/Dashboard/index.js";
 
 class App extends Component {
   state = {
