@@ -9,9 +9,10 @@ import Body from "./pages/Body";
 import Dashboard from "./pages/Dashboard";
 import NoMatch from "./pages/NoMatch/index";
 import axios from "axios"
-
+// import Dashboard from "./pages/Dashboard/index"
 
 import API from './utils/API';
+import Dashboard from "./pages/Dashboard/index.js";
 
 class App extends Component {
   state = {
@@ -93,7 +94,7 @@ class App extends Component {
             <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/user/:userid" component={UserView} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard/:userid" render={(props) => <Dashboard user={this.state.user} {...props} /> } />
             <Route component={NoMatch} />
           </Switch>
           <Footer />
