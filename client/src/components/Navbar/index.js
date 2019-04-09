@@ -19,7 +19,7 @@ function Nav(props) {
           <Link className="nav-item nav-link active" to="/">Home <span className="sr-only">(current)</span></Link>
           {!props.loggedIn ?
           <Link className="nav-item nav-link active" to="/signup">Sign up <span className="sr-only">(current)</span></Link> :
-          <Link className="nav-item nav-link active" to="/dashboard/:userid">Dashboard</Link>
+          <Link className="nav-item nav-link active" to={`/dashboard/${props.user._id}`}>Dashboard</Link>
           }
         </div>
       </div>
