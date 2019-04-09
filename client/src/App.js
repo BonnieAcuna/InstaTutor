@@ -87,11 +87,13 @@ class App extends Component {
             logOutOnClick={this.logOutOnClick}
           />
           {/* <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} /> */}
-          <Features/>
+          <Features
+          // loggedIn={this.state.loggedIn}
+          />
           <Switch>
             <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/user/:userid" component={UserView} />
+            <Route exact path="/user/:userid" render={(props) => <UserView loggedIn={this.state.loggedIn} {...props}/>} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route component={NoMatch} />
           </Switch>
