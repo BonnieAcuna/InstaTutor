@@ -24,7 +24,7 @@ function Nav(props) {
         </div>
       </div>
       <div className="d-flex flex-row-reverse bd-highlight">
-        {(props.user.firstName) ? props.user.firstName :
+        {(props.user.firstName) ? props.user.firstName.charAt(0).toUpperCase() + props.user.firstName.slice(1) :
           <Navlogin
             email={props.email}
             password={props.password}
