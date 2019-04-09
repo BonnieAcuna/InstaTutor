@@ -59,7 +59,7 @@ class App extends Component {
           user:{},
           loggedIn: false
         });
-        // window.location.reload();
+        window.location.reload();
       })
       .catch(err=>{
         console.log(err)
