@@ -2,7 +2,11 @@ import axios from "axios";
 
 export default {
     createUser: function(userData){
-        return axios.post("/auth/register", userData)
+        return axios.post("/auth/register", userData, {
+            headers: {
+                'Content-type': 'multipart/form-data'
+            }
+        })
     },
     getCurrentUser: function(){
         return axios.get("/api/allUsers/currentUser", {

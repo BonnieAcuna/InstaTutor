@@ -73,22 +73,14 @@ export default function SignUpForm(props) {
         <div className="form-group">
         
             <label>Image</label>
-            <input type="file" id="upload" name={"image"} ref={this.fileInput}></input>
+            <input type="file" id="upload" name={"image"} ref={props.fileRef}></input>
             
         </div>
         <button
         type="button"
         className="signup-btn btn btn-primary"
         onClick={() =>
-          props.signUpOnClick(
-            props.userType,
-            props.firstName,
-            props.lastName,
-            props.email,
-            props.password,
-            props.subjects,
-            props.subject
-          )
+          props.signUpOnClick()
         }
       >
         Sign Up
