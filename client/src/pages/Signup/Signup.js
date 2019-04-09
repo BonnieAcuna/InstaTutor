@@ -18,6 +18,14 @@ class Signup extends Component {
     success: false
   };
 
+  constructor(props) {
+    super(props)
+    this.fileInput = React.createRef();
+    console.log(this.fileInput)
+    this.signUpOnClick = this.signUpOnClick.bind(this);
+};
+
+
   signUpOnClick = (
     userType,
     firstName,

@@ -28,6 +28,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
+
+
 //Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/instaTutor", { useNewUrlParser: true });
 

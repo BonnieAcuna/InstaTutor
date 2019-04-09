@@ -9,7 +9,7 @@ import Body from "./pages/Body";
 import Dashboard from "./pages/Dashboard";
 import NoMatch from "./pages/NoMatch/index";
 import axios from "axios"
-import Dashboard from "./pages/Dashboard/index"
+
 
 import API from './utils/API';
 
