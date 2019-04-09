@@ -1,8 +1,16 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 import { Container, Row } from "../../components/Grid/index";
 //import Login from "../../components/Login/Login";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 class Signup extends Component {
   state = {
@@ -16,6 +24,7 @@ class Signup extends Component {
     success: false
   };
 
+<<<<<<< HEAD
     signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
         API.createUser({
             userType: userType,
@@ -50,6 +59,52 @@ class Signup extends Component {
           [name]: value
         });
       };
+=======
+  constructor(props) {
+    super(props)
+    this.fileInput = React.createRef();
+    console.log(this.fileInput)
+    this.signUpOnClick = this.signUpOnClick.bind(this);
+};
+
+
+  signUpOnClick = () => {
+    console.log("hitttttttttttttttttttttttttx")
+    let formData = new FormData();
+      formData.append("userType", this.state.userType);
+      formData.append("firstName", this.state.firstName);
+      formData.append("lastName", this.state.lastName);
+      formData.append("email", this.state.email);
+      formData.append("password", this.state.password);
+      formData.append("subjects", this.state.subjects.join(','));
+      formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0]._id);
+    API.createUser(formData)
+      .then(res => {
+        // console.log(formData)
+        this.setState({
+          userType: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          subject: "",
+          subjects: []
+        });
+      })
+      .catch(err => console.log(err));
+  }
+  pushSubject = (subject) => {
+    this.setState({ subjects: [...this.state.subjects, subject] });
+    this.setState({ subject: "" })
+};
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+>>>>>>> master
 
     render() {
         return (
@@ -66,6 +121,7 @@ class Signup extends Component {
                         handleInputChange={this.handleInputChange}
                         signUpOnClick={this.signUpOnClick}
                         pushSubject={this.pushSubject}
+                        fileRef={this.fileInput}
                     />
                 </Row>
             </Container>

@@ -22,6 +22,11 @@ router.get('/currentUser', passport.authenticate('jwt', {session: false}), allUs
 router.route("/")
     .get(allUserControllers.findAll);
 
+// // get images 
+// router.route("/")
+//     .post(allUserControllers.create)
+
+
 //get random users based on userType : "tutor"
 // router.route("/random")
 //     .get(passport.authenticate("jwt", {session: false}),

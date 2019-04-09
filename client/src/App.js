@@ -6,9 +6,10 @@ import Footer from "./components/Footer/Footer";
 import UserView from "./pages/UserView/userView";
 import Features from "./components/Features";
 import Body from "./pages/Body";
+import Dashboard from "./pages/Dashboard";
 import NoMatch from "./pages/NoMatch/index";
 import axios from "axios"
-import Dashboard from "./pages/Dashboard/index"
+// import Dashboard from "./pages/Dashboard/index"
 
 import API from './utils/API';
 
@@ -94,7 +95,7 @@ class App extends Component {
             <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/user/:userid" render={(props) => <UserView loggedIn={this.state.loggedIn} {...props}/>} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard/:userid" render={(props) => <Dashboard user={this.state.user} {...props} /> } />
             <Route component={NoMatch} />
           </Switch>
           <Footer />

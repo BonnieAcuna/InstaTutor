@@ -1,4 +1,7 @@
 const express = require("express")
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const fs = require("fs");
 const router = express.Router();
 const AllUsers = require("../models/AllUsers");
 const bcrypt = require("bcrypt")
@@ -7,14 +10,41 @@ var passport = require('passport');
 var secret = require('../config/secret');
 require('../config/passport')(passport);
 
+const upload = multer({ dest: 'public/uploads' });
+const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
+const cloud_apikey = process.env.CLOUDINARY_API_KEY;
+const cloud_secret = process.env.CLOUDINARY_API_SECRET;
 // Validate password
 var comparePassword = function (typedPassword, password) {
     return bcrypt.compareSync(typedPassword, password)
 }
 
+
+// upload images
+uploadCDNY = (req, res, next) => {
+    if(req.file) {
+        cloudinary.uploader.upload(`public/uploads/${req.file.filename}`, function(result) {
+            fs.unlink(`public/uploads/${req.file.filename}`, err => {
+                if (err) throw err;
+                console.log("file was successfully deleted");
+            });
+            req.file.filename = result.url;
+            return next();
+        });
+    } else {
+        return next();
+    };
+};
+cloudinary.config({
+    cloud_name: cloud_name,
+    api_key: cloud_apikey,
+    api_secret: cloud_secret
+});
+
 // Signup route
-router.post("/register", (req, res) => {
+router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
     //find if user has been registered with same email
+    console.log(req.body)
     AllUsers.find({ email: req.body.email })
         .then(user => {
             if (user.length >= 1) {
@@ -25,6 +55,7 @@ router.post("/register", (req, res) => {
                 //hash password 
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     if (err) {
+                        console.log(err)
                         return res.status(500).json({
                             error: err
                         });
@@ -35,7 +66,8 @@ router.post("/register", (req, res) => {
                             lastName: req.body.lastName,
                             email: req.body.email,
                             password: hash,
-                            subjects: req.body.subjects
+                            subjects: req.body.subjects.split(','),
+                            image: req.file.filename
                         });
                         //save newUser
                         newUser.save()
@@ -46,6 +78,7 @@ router.post("/register", (req, res) => {
                                 })
                             })
                             .catch(err => {
+                                console.log(err)
                                 res.status(500).json({
                                     message: "Unable to create user",
                                     error: err
@@ -55,12 +88,15 @@ router.post("/register", (req, res) => {
                 })
             }
         })
+        .catch(err=>{
+            console.log(err)
+        })
 });
 
 //Login route
 router.post("/login", (req, res) => {
     // example with headers object
-    console.log(req.headers);
+    // console.log(req.headers);
     AllUsers.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {

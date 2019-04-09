@@ -32,10 +32,12 @@ class Search extends Component {
 
     renderSearchedTutors() {
         // if no results then show no results found
+        
         if (this.state.tutors.length !== 0){
+            console.log(this.state.tutors)
             return this.state.tutors.map((tutor, index) => (
                 <FeaturedTutors
-                  id={tutor.id}
+                  userid={tutor._id}
                   key={index}
                   name={tutor.firstName + " " + tutor.lastName}  
                   image={tutor.image}
@@ -73,6 +75,15 @@ class Search extends Component {
                     <Col size="md-2">
                     </Col>
                 </Row>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+
             <Container>
                 <Row>
                     {this.renderSearchedTutors()}
