@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 import { Container, Row } from "../../components/Grid/index";
 //import Login from "../../components/Login/Login";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 class Signup extends Component {
   state = {
@@ -24,42 +16,6 @@ class Signup extends Component {
     success: false
   };
 
-<<<<<<< HEAD
-    signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
-        API.createUser({
-            userType: userType,
-            firstName: firstName,
-            lastName: lastName,
-            subjects: subjects,
-            email: email,
-            password: password,
-        })
-            .then(res => {
-                this.setState({
-                    userType: "",
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    password: "",
-                    subject: "",
-                    subjects: []
-                })
-            })
-            .catch(err => console.log(err));
-    }
-
-    pushSubject = (subject) => {
-        this.setState({ subjects: [...this.state.subjects, subject] });
-        this.setState({ subject: "" })
-    };
-
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-          [name]: value
-        });
-      };
-=======
   constructor(props) {
     super(props)
     this.fileInput = React.createRef();
@@ -104,7 +60,6 @@ class Signup extends Component {
       [name]: value
     });
   };
->>>>>>> master
 
     render() {
         return (
