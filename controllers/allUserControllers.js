@@ -15,15 +15,14 @@ module.exports = {
     },
     findRandoms: function (req, res) {
         console.log("---------------------------------------")
-        console.log(req.user)
         console.log('hit')
         db.find({userType : "tutor"})
             .then(dbModel => {
-                // console.log('success')
+                console.log(dbModel)
                 const newRandomTutors = [];
                 const usedRandVals = [];
                 // console.log(newRandomTutors);
-                while (newRandomTutors.length < 6) {
+                while (newRandomTutors.length < 6 && dbModel.length > newRandomTutors.length) {
                     const newRandVal = findRandomVal(dbModel);
                     // console.log(newRandVal);
                     if (usedRandVals.indexOf(newRandVal) === -1) {

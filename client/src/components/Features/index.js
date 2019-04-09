@@ -17,10 +17,8 @@ class Features extends React.Component {
     }
   }
   tutorCard = () => {
-    console.log("HIT")
     API.getTutors() 
      .then(res => {
-  
         this.setState({ tutors: res.data })
      })
     .catch(err => console.log(err));
