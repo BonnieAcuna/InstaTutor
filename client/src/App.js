@@ -34,12 +34,16 @@ class App extends Component {
       })
   }
 
-  loginOnClick = () => {
+  loginOnClick = (event) => {
+    event.preventDefault()
     const { email, password } = this.state
     axios.post("/auth/login", { email, password })
       .then((res) => {
         console.log(res.data)
         localStorage.setItem("jwtToken", res.data.token);
+        if (res.data.success){
+          this.updateUser();
+        }
         // this.setState({
         //   success: res.data.success
         // });
@@ -55,7 +59,7 @@ class App extends Component {
           user:{},
           loggedIn: false
         });
-        window.location.reload();
+        // window.location.reload();
       })
       .catch(err=>{
         console.log(err)
@@ -82,7 +86,8 @@ class App extends Component {
             loginOnClick={this.loginOnClick}
             logOutOnClick={this.logOutOnClick}
           />
-          <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} />
+          {/* <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} /> */}
+          <Features/>
           <Switch>
             <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
             <Route exact path="/signup" component={Signup} />
