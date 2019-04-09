@@ -20,7 +20,11 @@ export default {
         })
     },
     getTutor: function(id){
-        return axios.get("/api/allUsers/" + id)
+        return axios.get("/api/allUsers/" + id, {
+            headers: {
+                Authorization: localStorage.getItem('jwtToken')
+            }
+        })
     },
     getSearchedTutors: function(query){
         console.log(query);

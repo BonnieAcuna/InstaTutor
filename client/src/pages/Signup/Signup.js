@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { Container, Row } from "../../components/Grid/index";
 //import Login from "../../components/Login/Login";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
-import axios from "axios";
 
 class Signup extends Component {
   state = {
@@ -17,18 +15,6 @@ class Signup extends Component {
     subjects: [],
     success: false
   };
-
-
-    state = {
-        userType: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        subject: "",
-        subjects: [],
-        success: false
-    }
 
     signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
         API.createUser({
@@ -58,25 +44,12 @@ class Signup extends Component {
         this.setState({ subject: "" })
     };
 
-
-  loginOnClick = () => {
-    const { email, password } = this.state;
-    axios
-      .post("/auth/login", { email, password })
-      .then(res => {
-        console.log(res.data);
-        localStorage.setItem("jwtToken", res.data.token);
+    handleInputChange = event => {
+        const { name, value } = event.target;
         this.setState({
-          success: res.data.success
+          [name]: value
         });
-      })
-      .catch(err => console.log(err));
-  };
-
-  pushSubject = subject => {
-    this.setState({ subjects: [...this.state.subjects, subject] });
-    this.setState({ subject: "" });
-  };
+      };
 
     render() {
         return (
