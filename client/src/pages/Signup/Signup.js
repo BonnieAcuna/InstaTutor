@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
+
 import { Container, Row } from "../../components/Grid/index";
 //import Login from "../../components/Login/Login";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
-import axios from "axios";
+
 
 class Signup extends Component {
   state = {
@@ -27,6 +27,7 @@ class Signup extends Component {
 
 
   signUpOnClick = () => {
+    console.log("hitttttttttttttttttttttttttx")
     let formData = new FormData();
       formData.append("userType", this.state.userType);
       formData.append("firstName", this.state.firstName);
@@ -34,9 +35,10 @@ class Signup extends Component {
       formData.append("email", this.state.email);
       formData.append("password", this.state.password);
       formData.append("subjects", this.state.subjects.join(','));
-      formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0].name);
+      formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0]._id);
     API.createUser(formData)
       .then(res => {
+        // console.log(formData)
         this.setState({
           userType: "",
           firstName: "",
@@ -54,19 +56,6 @@ class Signup extends Component {
     this.setState({ subject: "" })
 };
 
-  loginOnClick = () => {
-    const { email, password } = this.state;
-    axios
-      .post("/auth/login", { email, password })
-      .then(res => {
-        console.log(res.data);
-        localStorage.setItem("jwtToken", res.data.token);
-        this.setState({
-          success: res.data.success
-        });
-      })
-      .catch(err => console.log(err));
-  };
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({

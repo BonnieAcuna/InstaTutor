@@ -44,6 +44,7 @@ cloudinary.config({
 // Signup route
 router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
     //find if user has been registered with same email
+    console.log(req.body)
     AllUsers.find({ email: req.body.email })
         .then(user => {
             if (user.length >= 1) {

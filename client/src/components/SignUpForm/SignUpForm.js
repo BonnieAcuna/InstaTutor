@@ -80,7 +80,15 @@ export default function SignUpForm(props) {
         type="button"
         className="signup-btn btn btn-primary"
         onClick={() =>
-          props.signUpOnClick()
+          props.signUpOnClick(
+            props.userType,
+            props.firstName,
+            props.lastName,
+            props.email,
+            props.password,
+            props.subjects,
+            props.subject
+          )
         }
       >
         Sign Up
