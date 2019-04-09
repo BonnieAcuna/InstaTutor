@@ -18,18 +18,6 @@ class Signup extends Component {
     success: false
   };
 
-
-    state = {
-        userType: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        subject: "",
-        subjects: [],
-        success: false
-    }
-
     signUpOnClick = (userType, firstName, lastName, email, password, subjects) => {
         API.createUser({
             userType: userType,
@@ -58,25 +46,12 @@ class Signup extends Component {
         this.setState({ subject: "" })
     };
 
-
-  loginOnClick = () => {
-    const { email, password } = this.state;
-    axios
-      .post("/auth/login", { email, password })
-      .then(res => {
-        console.log(res.data);
-        localStorage.setItem("jwtToken", res.data.token);
-        this.setState({
-          success: res.data.success
-        });
-      })
-      .catch(err => console.log(err));
-  };
-
-  pushSubject = subject => {
-    this.setState({ subjects: [...this.state.subjects, subject] });
-    this.setState({ subject: "" });
-  };
+    handleInputChange = event => {
+      const { name, value } = event.target;
+      this.setState({
+        [name]: value
+      });
+    };
 
     render() {
         return (
