@@ -44,6 +44,7 @@ class Features extends React.Component {
             name={tutor.firstName + " " + tutor.lastName}  
             image={tutor.image}
             subjects={tutor.subjects.join(", ")}
+            loggedIn={this.props.loggedIn}
             
           />
         ))}
