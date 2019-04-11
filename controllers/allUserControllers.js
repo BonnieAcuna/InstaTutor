@@ -4,7 +4,6 @@ const findRandomVal = arr => Math.floor(Math.random() * arr.length);
 
 module.exports = {
     findAll: (req, res) => {
-        console.log('Controller Data')
         db.find({})
             .sort({ date: -1 })
             .then(dbModel => res.json(dbModel))
@@ -14,23 +13,17 @@ module.exports = {
             });
     },
     findRandoms: function (req, res) {
-        console.log("---------------------------------------")
-        console.log('hit')
-        db.find({userType : "tutor"})
+        db.find({userType : "tutor", featured: true})
             .then(dbModel => {
-                console.log(dbModel)
                 const newRandomTutors = [];
                 const usedRandVals = [];
-                // console.log(newRandomTutors);
                 while (newRandomTutors.length < 6 && dbModel.length > newRandomTutors.length) {
                     const newRandVal = findRandomVal(dbModel);
-                    // console.log(newRandVal);
                     if (usedRandVals.indexOf(newRandVal) === -1) {
                         newRandomTutors.push(dbModel[newRandVal]);
                         usedRandVals.push(newRandVal);
                     }
                 }
-                // console.log(newRandomTutors);
                 res.json(newRandomTutors);
             })
             .catch(err => res.status(422).json(err));
@@ -48,7 +41,7 @@ module.exports = {
     findBySubject: function(req, res){
         let str = `.*${req.params.query}.*`
         let reg = new RegExp(str, "gi")
-        db.find({subjects: {$in: [ reg ]}})
+        db.find({subjects: {$in: [ reg ]}, userType: "tutor"})
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },

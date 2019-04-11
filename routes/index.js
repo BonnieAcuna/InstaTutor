@@ -7,7 +7,6 @@ const auth = require("./auth");
 
 //API Routes
 router.use("/api", apiRoutes);
-// router.use("/login", loginRoute);
 router.use("/auth", auth);
 
 

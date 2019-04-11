@@ -25,14 +25,8 @@ class Features extends React.Component {
     }
 
   render (){
-    // console.log(this.state);
     return (
     <div className="tutorCards">
-    {/* <div className="card">
-      
-      <div 
-        className="content"
-        style={{display:"flex", alignItems:"center"}}> */}
         
         
         <div style={{display:"flex"}}>
@@ -49,9 +43,6 @@ class Features extends React.Component {
           />
         ))}
         </div>
-        
-      {/* </div>
-    </div> */}
     </div>
     )
   }
