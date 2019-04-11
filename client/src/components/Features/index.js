@@ -5,34 +5,32 @@ import FeaturedTutors from "../FeaturedTutors/FeaturedTutors";
 class Features extends React.Component {
   state = {
     tutors: [],
-  
+    requests: 0
 };
  
   componentDidMount() {
     this.tutorCard();
   }
   componentDidUpdate(){
-    if(this.state.tutors.length === 0){
+    if(this.state.tutors.length === 0 && this.state.requests < 10){
       this.tutorCard();
     }
   }
   tutorCard = () => {
+    this.setState({
+      requests: this.state.requests + 1
+    })
     API.getTutors() 
      .then(res => {
+        console.log(res.data)
         this.setState({ tutors: res.data })
      })
     .catch(err => console.log(err));
     }
 
   render (){
-    // console.log(this.state);
     return (
     <div className="tutorCards">
-    {/* <div className="card">
-      
-      <div 
-        className="content"
-        style={{display:"flex", alignItems:"center"}}> */}
         
         
         <div style={{display:"flex"}}>
@@ -49,9 +47,6 @@ class Features extends React.Component {
           />
         ))}
         </div>
-        
-      {/* </div>
-    </div> */}
     </div>
     )
   }
