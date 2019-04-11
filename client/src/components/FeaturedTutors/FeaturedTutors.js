@@ -7,26 +7,37 @@ class FeaturedTutors extends Component {
 
 
     render() {
-        
-        
+
+
         return (
             <Row>
                 <Col size="sm-2">
                 </Col>
                 <Col size="sm-8">
-                        <Link to={`/user/${this.props.userid}`}>
-                            <div className="container">
-                                <div className="card shadow-sm bg-white rounded">
-                                    <div className="card-img-top">
-                                        <img src={this.props.image} alt="Random Tutor" />
-                                        <div className="card-body">
-                                            <p className="card-text">{this.props.name}<br></br>
-                                                {this.props.subjects}</p>
+                    <Link to={`/user/${this.props.userid}`}>
+                        <div className="container">
+                            <div className="card ftCard shadow-sm bg-white rounded">
+                                <Row>
+                                    <Col size="sm-4">
+                                        <div className="card-image">
+                                            <img src={this.props.image} alt="Random Tutor" className="cardImage" />
                                         </div>
+                                    </Col>
+                                    <Col size="sm-4 md-8">
+                                    <div className="card-header cardHead text-center">
+                                        {this.props.name}
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <div className="card-body text-center">
+
+                                        {this.props.subjects}
                                     </div>
-                                </div>
+                                </Row>
                             </div>
-                        </Link>
+                        </div>
+                    </Link>
                 </Col>
                 <Col size="sm-2">
                 </Col>

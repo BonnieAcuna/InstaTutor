@@ -1,4 +1,38 @@
-.tutorView {
-    border: 2px solid black;
-    background: orangered;
-}
+
+    body {
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    }
+    .tutorView {
+        display:inline-flex;
+        background-color:white;
+        box-shadow:0 0 40px 4px rgba(0,0,0,0.1);
+        border-radius:5px;
+        overflow:hidden;
+        max-width:100%;
+        // margin-top: 20px;
+        // margin-bottom: 20px;
+        transition:.4s;
+        cursor:pointer;
+        text-align:left;
+        .cardImg {
+            width:400px;
+            height:460px;
+        }
+    }
+    
+    
+
+    
+    .card-title {
+        font-size:20px;
+        font-weight:600;
+        margin-bottom:10px;
+    }
+    .card-description {
+        font-size:14px;
+        color:#4e4e4e;
+        margin-bottom:15px;
+    }
+    .card-footer {
+        padding:20px;
+    }
