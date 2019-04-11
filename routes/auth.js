@@ -67,7 +67,7 @@ router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
                             email: req.body.email,
                             password: hash,
                             subjects: req.body.subjects.split(','),
-                            image: req.file.filename
+                            image: (req.file)? req.file.filename : "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
                         });
                         //save newUser
                         newUser.save()
