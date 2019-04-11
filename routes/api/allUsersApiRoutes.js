@@ -16,20 +16,28 @@ const getToken = function (headers) {
     }
 };
 
-router.get("/", passport.authenticate("jwt", {session: false}),allUserControllers.findAll)
+// router.get("/", passport.authenticate("jwt", {session: false}),allUserControllers.findAll)
 router.get('/currentUser', passport.authenticate('jwt', {session: false}), allUserControllers.findLoggedInUser)
 //gets all users
+router.route("/")
+    .get(allUserControllers.findAll);
+
+// // get images 
 // router.route("/")
-//     .get(allUserControllers.findAll);
+//     .post(allUserControllers.create)
+
 
 //get random users based on userType : "tutor"
+// router.route("/random")
+//     .get(passport.authenticate("jwt", {session: false}),
+//     allUserControllers.findRandoms);
 router.route("/random")
-    .get(passport.authenticate("jwt", {session: false}),
-    allUserControllers.findRandoms);
+    .get(allUserControllers.findRandoms);
 
 // get a user by id    
 router.route("/:id")
-    .get(allUserControllers.findById);
+    .get(passport.authenticate("jwt", {session: false}),
+    allUserControllers.findById);
 
 //gets tutors by 
 router.route("/search/:query")

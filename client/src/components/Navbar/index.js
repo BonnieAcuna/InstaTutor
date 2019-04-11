@@ -19,12 +19,12 @@ function Nav(props) {
           <Link className="nav-item nav-link active" to="/">Home <span className="sr-only">(current)</span></Link>
           {!props.loggedIn ?
           <Link className="nav-item nav-link active" to="/signup">Sign up <span className="sr-only">(current)</span></Link> :
-          <Link className="nav-item nav-link active" to="/dashboard/:userid">Dashboard</Link>
+          <Link className="nav-item nav-link active" to={`/dashboard/${props.user._id}`}>Dashboard</Link>
           }
         </div>
       </div>
       <div className="d-flex flex-row-reverse bd-highlight">
-        {(props.user.firstName) ? props.user.firstName :
+        {(props.user.firstName) ? props.user.firstName.charAt(0).toUpperCase() + props.user.firstName.slice(1) :
           <Navlogin
             email={props.email}
             password={props.password}
