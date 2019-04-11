@@ -19,7 +19,12 @@ class UserView extends Component {
     };
 
     componentDidMount(){
-        this.loadTutor()
+        if (this.props.loggedIn){
+            this.loadTutor()
+        }else{
+            this.props.history.push("/signup")
+        }
+       
     };
     
     componentDidUpdate(){
