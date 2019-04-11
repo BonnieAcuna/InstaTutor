@@ -13,9 +13,8 @@ module.exports = {
             });
     },
     findRandoms: function (req, res) {
-        db.find({userType : "tutor", $or:[{featured: true}, {featured: "true"}]})
+        db.find({userType : "tutor", featured: true})
             .then(dbModel => {
-                console.log(dbModel)
                 const newRandomTutors = [];
                 const usedRandVals = [];
                 while (newRandomTutors.length < 6 && dbModel.length > newRandomTutors.length) {
