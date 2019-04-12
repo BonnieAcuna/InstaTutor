@@ -25,15 +25,17 @@ class Signup extends Component {
 
 
   signUpOnClick = () => {
-    console.log("hitttttttttttttttttttttttttx")
+    console.log("hittttttttttttttttttttttttt")
     let formData = new FormData();
-    formData.append("userType", this.state.userType);
-    formData.append("firstName", this.state.firstName);
-    formData.append("lastName", this.state.lastName);
-    formData.append("email", this.state.email);
-    formData.append("password", this.state.password);
-    formData.append("subjects", this.state.subjects.join(','));
-    formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0]._id);
+      formData.append("userType", this.state.userType);
+      formData.append("firstName", this.state.firstName);
+      formData.append("lastName", this.state.lastName);
+      formData.append("email", this.state.email);
+      formData.append("password", this.state.password);
+      formData.append("subjects", this.state.subjects.join(','));
+      if(this.fileInput.current.files[0]){
+        formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0].name);
+      }
     API.createUser(formData)
       .then(res => {
         // console.log(formData)

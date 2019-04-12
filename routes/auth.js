@@ -44,7 +44,6 @@ cloudinary.config({
 // Signup route
 router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
     //find if user has been registered with same email
-    console.log(req.body)
     AllUsers.find({ email: req.body.email })
         .then(user => {
             if (user.length >= 1) {
@@ -67,12 +66,11 @@ router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
                             email: req.body.email,
                             password: hash,
                             subjects: req.body.subjects.split(','),
-                            image: req.file.filename
+                            image: (req.file)? req.file.filename : "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
                         });
                         //save newUser
                         newUser.save()
                             .then(result => {
-                                console.log(result)
                                 res.status(201).json({
                                     message: "User Created"
                                 })
@@ -96,7 +94,6 @@ router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
 //Login route
 router.post("/login", (req, res) => {
     // example with headers object
-    // console.log(req.headers);
     AllUsers.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {

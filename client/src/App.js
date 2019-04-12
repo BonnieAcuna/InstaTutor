@@ -24,7 +24,6 @@ class App extends Component {
   updateUser = () => {
     API.getCurrentUser()
       .then((res) => {
-        console.log(res.data)
         this.setState({
           user: res.data.user,
           loggedIn: true
@@ -40,7 +39,6 @@ class App extends Component {
     const { email, password } = this.state
     axios.post("/auth/login", { email, password })
       .then((res) => {
-        console.log(res.data)
         localStorage.setItem("jwtToken", res.data.token);
         if (res.data.success){
           this.updateUser();

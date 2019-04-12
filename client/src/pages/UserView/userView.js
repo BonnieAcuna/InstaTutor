@@ -3,6 +3,7 @@
 //if user is logged in - show the tutor(s) - if user is not logged in - redirect to the sign up page
 import React, { Component } from "react";
 import { Container, Row } from "../../components/Grid/index";
+import Testimonials from "../../components/Testimonials";
 import API from "../../utils/API";
 import "./style.scss";
 //import TutorView from "../profile/:theirId"
@@ -18,61 +19,76 @@ class UserView extends Component {
         //possibly do object instead of array
     };
 
-    componentDidMount(){
-        if (this.props.loggedIn){
+    componentDidMount() {
+        if (this.props.loggedIn) {
             this.loadTutor()
-        }else{
+        } else {
             this.props.history.push("/signup")
         }
-       
+
     };
-    
-    componentDidUpdate(){
+
+    componentDidUpdate() {
         this.loadTutor()
     }
 
-    renderTutor (tutor) {
-        if (Object.values(tutor).length > 1){
-            return(
-                <div className="container tutorView">
-                    <div className="col-md-8 mx-auto">
-                    {tutor.firstName}
-                    {tutor.lastName}
-                    {tutor.email}
+    renderTutor(tutor) {
+        if (Object.values(tutor).length > 1) {
+            return (
 
-                  <img src={tutor.image} alt="tutor"/>
+                <div className="card tutorView mt-3 mb-2">
+                    <Row>
 
-                  {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
-                  </div>
-                </div>
-            )
-        }
-        return;
-    }
+                        <img src={tutor.image} alt="tutor" className="cardImg" />
 
-    loadTutor() {
-        if(this.state.tutorId !== this.props.match.params.userid){
-            API.getTutor(this.props.match.params.userid)
-            .then(res=> {
-                this.setState({ 
-                    tutor:res.data,
-                    tutorId: this.props.match.params.userid 
-                })
-            })
-            .catch(err=> console.log(err));
-        }
-    }
 
-    render() {
+                        <div className="card-footer">
+                            <div className="card-title text-center">
+                                {tutor.firstName}
+                                {tutor.lastName}<br></br>
+                                {tutor.email}
+                            </div>
+                            <div className="card-description text-center">
+                                <div className="md-8">
+
+                                    {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                                </div>
+                            </div>
+                        <Testimonials render={tutor}/>
+                            </div>
+
+                        </Row>
+                        
+                    </div>
+
+                    )
+                }
+                return;
+            }
         
+    loadTutor() {
+        if (this.state.tutorId !== this.props.match.params.userid) {
+                        API.getTutor(this.props.match.params.userid)
+                            .then(res => {
+                                this.setState({
+                                    tutor: res.data,
+                                    tutorId: this.props.match.params.userid
+                                })
+                            })
+                            .catch(err => console.log(err));
+                    }
+                }
+            
+    render() {
+
         return (
             <Container>
-                <Row>
-                    {this.renderTutor(this.state.tutor)}
-                </Row>
-            </Container>
-        )
-    }
-}
-
+                        <Row>
+                            {this.renderTutor(this.state.tutor)}
+                        </Row>
+                    </Container>
+                    )
+                }
+            }
+            
 export default UserView;
