@@ -34,6 +34,7 @@ export default function SignUpForm(props) {
           onChange={props.handleInputChange}
           name="firstName"
           placeholder="First Name"
+          required
         />
 
         <input
@@ -42,6 +43,7 @@ export default function SignUpForm(props) {
           onChange={props.handleInputChange}
           name="lastName"
           placeholder="Last Name"
+          required
         />
 
         <input
@@ -50,6 +52,7 @@ export default function SignUpForm(props) {
           onChange={props.handleInputChange}
           name="email"
           placeholder="Email"
+          required
         />
 
         <input
@@ -59,6 +62,7 @@ export default function SignUpForm(props) {
           onChange={props.handleInputChange}
           name="password"
           placeholder="Password"
+          required 
         />
         <div className="text-center">
           <TutorSubjects
@@ -70,31 +74,46 @@ export default function SignUpForm(props) {
         </div>
         <div className="clear"></div>
         <div className="text-center">
-        <div className="form-group">
-        
+          <div className="form-group">
+
             <label>Image</label>
             <input type="file" id="upload" name={"image"} ref={props.fileRef}></input>
-            
-        </div>
-        <button
-        type="button"
-        className="signup-btn btn btn-success"
-        onClick={() =>
-          props.signUpOnClick(
-            props.userType,
-            props.firstName,
-            props.lastName,
-            props.email,
-            props.password,
-            props.subjects,
-            props.subject
-          )
-        }
-      >
-        Sign Up
+
+
+          </div>
+
+          {(props.error) ? <div class="alert alert-danger alert-dismissible fade show" role="alert"> {props.error}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> : null}
+
+          {(props.createdUser) ? <div class="alert alert-success alert-dismissible fade show" role="alert"> You have created an account pleasse log in
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> : null}
+
+          <button
+            type="button"
+            className="signup-btn btn btn-primary"
+            onClick={() =>
+              props.signUpOnClick(
+                props.userType,
+                props.firstName,
+                props.lastName,
+                props.email,
+                props.password,
+                props.subjects,
+                props.subject
+              )
+            }
+          >
+            Sign Up
+
       </button>
         </div>
-        
+
       </form>
     </div>
   );

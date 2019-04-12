@@ -18,7 +18,8 @@ class App extends Component {
     user: {},
     email: "",
     password: "",
-    loggedIn: false
+    loggedIn: false,
+    error: null
   }
 
   updateUser = () => {
@@ -43,9 +44,12 @@ class App extends Component {
         if (res.data.success){
           this.updateUser();
         }
-        // this.setState({
-        //   success: res.data.success
-        // });
+        if (res.data.error) {
+          // Show error to user
+          this.setState({
+            error: res.data.error
+          })
+        }
       })
       .catch(err => console.log(err))
   }
@@ -84,6 +88,7 @@ class App extends Component {
             handleInputChange={this.handleInputChange}
             loginOnClick={this.loginOnClick}
             logOutOnClick={this.logOutOnClick}
+            error={this.state.error}
           />
           {/* <Route path={new RegExp("^(?!.*(/register)).*$")} component={Features} /> */}
           <Features

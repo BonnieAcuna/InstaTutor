@@ -14,13 +14,14 @@ class Signup extends Component {
     password: "",
     subject: "",
     subjects: [],
-    success: false
+    createdUser: false,
+    error: null
   };
 
   constructor(props) {
     super(props)
     this.fileInput = React.createRef();
-    console.log(this.fileInput)
+    // console.log(this.fileInput)
     this.signUpOnClick = this.signUpOnClick.bind(this);
   };
 
@@ -28,27 +29,34 @@ class Signup extends Component {
   signUpOnClick = () => {
     console.log("hittttttttttttttttttttttttt")
     let formData = new FormData();
-      formData.append("userType", this.state.userType);
-      formData.append("firstName", this.state.firstName);
-      formData.append("lastName", this.state.lastName);
-      formData.append("email", this.state.email);
-      formData.append("password", this.state.password);
-      formData.append("subjects", this.state.subjects.join(','));
-      if(this.fileInput.current.files[0]){
-        formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0].name);
-      }
+    formData.append("userType", this.state.userType);
+    formData.append("firstName", this.state.firstName);
+    formData.append("lastName", this.state.lastName);
+    formData.append("email", this.state.email);
+    formData.append("password", this.state.password);
+    formData.append("subjects", this.state.subjects.join(','));
+    if (this.fileInput.current.files[0]) {
+      formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0].name);
+    }
     API.createUser(formData)
       .then(res => {
-        // console.log(formData)
-        this.setState({
-          userType: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          subject: "",
-          subjects: []
-        });
+        if (res.data.error) {
+          // Show error to user
+          this.setState({
+            error: res.data.error
+          })
+        } else {
+          this.setState({
+            userType: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            subject: "",
+            subjects: [],
+            createdUser: true
+          });
+        }
       })
       .catch(err => console.log(err));
   }
@@ -80,11 +88,13 @@ class Signup extends Component {
             signUpOnClick={this.signUpOnClick}
             pushSubject={this.pushSubject}
             fileRef={this.fileInput}
+            error={this.state.error}
+            createdUser={this.state.createdUser}
+
           />
         </Row>
       </Container>
     )
-
 
   }
 
