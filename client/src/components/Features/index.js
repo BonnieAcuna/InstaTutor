@@ -22,7 +22,6 @@ class Features extends React.Component {
     })
     API.getTutors() 
      .then(res => {
-        console.log(res.data)
         this.setState({ tutors: res.data })
      })
     .catch(err => console.log(err));

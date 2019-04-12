@@ -95,8 +95,7 @@ router.post("/login", (req, res) => {
     AllUsers.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
-                res.send({ success: false, message: "Authentication failed user not found." });
-                console.log("no user");
+                return res.json({error:"Please enter a valid email or password"})
             } else {
                 // check if password match db
                 if (comparePassword(req.body.password, user.password)) {
@@ -106,7 +105,7 @@ router.post("/login", (req, res) => {
                     res.json({ success: true, token: "JWT " + token });
                 }
                 else {
-                    res.json({ success: false, message: "Authentication failed" })
+                    return res.json({error:"Please enter a valid email or password"})
                 }
             }
         })
