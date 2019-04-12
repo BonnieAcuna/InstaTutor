@@ -14,11 +14,11 @@ module.exports = {
             });
     },
     findRandoms: function (req, res) {
-        console.log("---------------------------------------")
-        console.log('hit')
+        // console.log("---------------------------------------")
+        // console.log('hit')
         db.find({userType : "tutor"})
             .then(dbModel => {
-                console.log(dbModel)
+                // console.log(dbModel)
                 const newRandomTutors = [];
                 const usedRandVals = [];
                 // console.log(newRandomTutors);

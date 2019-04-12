@@ -13,13 +13,14 @@ class Signup extends Component {
     password: "",
     subject: "",
     subjects: [],
-    success: false
+    success: false,
+    error: null
   };
 
   constructor(props) {
     super(props)
     this.fileInput = React.createRef();
-    console.log(this.fileInput)
+    // console.log(this.fileInput)
     this.signUpOnClick = this.signUpOnClick.bind(this);
 };
 
@@ -36,16 +37,23 @@ class Signup extends Component {
       formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0]._id);
     API.createUser(formData)
       .then(res => {
-        // console.log(formData)
-        this.setState({
-          userType: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          subject: "",
-          subjects: []
-        });
+        if(res.data.error){
+          // Show error to user
+          console.log(res.data.error)
+          this.setState({
+            error: res.data.error
+          })
+        }else{
+          this.setState({
+            userType: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            subject: "",
+            subjects: []
+          });
+        }
       })
       .catch(err => console.log(err));
   }
@@ -65,6 +73,7 @@ class Signup extends Component {
         return (
             <Container>
                 <Row>
+                    {(this.state.error)? <div>{this.state.error}</div> : null}
                     <SignUpForm
                         userType={this.state.userType}
                         firstName={this.state.firstName}

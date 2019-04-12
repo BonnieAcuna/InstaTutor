@@ -42,15 +42,13 @@ cloudinary.config({
 });
 
 // Signup route
-router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
+router.post("/register", upload.single('image'), uploadCDNY, (req, res, next) => {
     //find if user has been registered with same email
-    console.log(req.body)
+    // console.log(req.body)
     AllUsers.find({ email: req.body.email })
         .then(user => {
             if (user.length >= 1) {
-                return res.status(409).json({
-                    message: "An account with that email already exist"
-                })
+                return res.json({error:"An account with that email already exist"})
             } else {
                 //hash password 
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
