@@ -18,11 +18,16 @@ function Nav(props) {
         <div className="navbar-nav">
           <Link className="nav-item nav-link active" to="/">Home <span className="sr-only">(current)</span></Link>
           {!props.loggedIn ?
-          <Link className="nav-item nav-link active" to="/signup">Sign up <span className="sr-only">(current)</span></Link> :
-          <Link className="nav-item nav-link active" to={`/dashboard/${props.user._id}`}>Dashboard</Link>
+            <Link className="nav-item nav-link active" to="/signup">Sign up <span className="sr-only">(current)</span></Link> :
+            <Link className="nav-item nav-link active" to={`/dashboard/${props.user._id}`}>Dashboard</Link>
           }
         </div>
       </div>
+      {(props.error) ? <div class="alert alert-danger alert-dismissible fade show" role="alert"> {props.error}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> : null}
       <div className="d-flex flex-row-reverse bd-highlight">
         {(props.user.firstName) ? props.user.firstName.charAt(0).toUpperCase() + props.user.firstName.slice(1) :
           <Navlogin
@@ -34,7 +39,7 @@ function Nav(props) {
         }
       </div>
       <div className="d-flex flex-row-reverse bd-highlight">
-        {(props.loggedIn) ? <div><button className="btn btn-danger"  style={{ float: "right", marginBottom: "40px", marginLeft: "30px" }} onClick={props.logOutOnClick}>Log Out</button></div>:
+        {(props.loggedIn) ? <div><button className="btn btn-danger" style={{ float: "right", marginBottom: "40px", marginLeft: "30px" }} onClick={props.logOutOnClick}>Log Out</button></div> :
           <div></div>}
       </div>
     </nav>

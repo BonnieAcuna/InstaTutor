@@ -42,14 +42,12 @@ cloudinary.config({
 });
 
 // Signup route
-router.post("/register", upload.single('image'), uploadCDNY, (req, res) => {
+router.post("/register", upload.single('image'), uploadCDNY, (req, res, next) => {
     //find if user has been registered with same email
     AllUsers.find({ email: req.body.email })
         .then(user => {
             if (user.length >= 1) {
-                return res.status(409).json({
-                    message: "An account with that email already exist"
-                })
+                return res.json({error:"An account with that email already exist"})
             } else {
                 //hash password 
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -97,8 +95,7 @@ router.post("/login", (req, res) => {
     AllUsers.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
-                res.send({ success: false, message: "Authentication failed user not found." });
-                console.log("no user");
+                return res.json({error:"Please enter a valid email or password"})
             } else {
                 // check if password match db
                 if (comparePassword(req.body.password, user.password)) {
@@ -108,7 +105,7 @@ router.post("/login", (req, res) => {
                     res.json({ success: true, token: "JWT " + token });
                 }
                 else {
-                    res.json({ success: false, message: "Authentication failed" })
+                    return res.json({error:"Please enter a valid email or password"})
                 }
             }
         })

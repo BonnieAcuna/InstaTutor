@@ -13,48 +13,56 @@ class Signup extends Component {
     password: "",
     subject: "",
     subjects: [],
-    success: false
+    createdUser: false,
+    error: null
   };
 
   constructor(props) {
     super(props)
     this.fileInput = React.createRef();
-    console.log(this.fileInput)
+    // console.log(this.fileInput)
     this.signUpOnClick = this.signUpOnClick.bind(this);
-};
+  };
 
 
   signUpOnClick = () => {
     console.log("hittttttttttttttttttttttttt")
     let formData = new FormData();
-      formData.append("userType", this.state.userType);
-      formData.append("firstName", this.state.firstName);
-      formData.append("lastName", this.state.lastName);
-      formData.append("email", this.state.email);
-      formData.append("password", this.state.password);
-      formData.append("subjects", this.state.subjects.join(','));
-      if(this.fileInput.current.files[0]){
-        formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0].name);
-      }
+    formData.append("userType", this.state.userType);
+    formData.append("firstName", this.state.firstName);
+    formData.append("lastName", this.state.lastName);
+    formData.append("email", this.state.email);
+    formData.append("password", this.state.password);
+    formData.append("subjects", this.state.subjects.join(','));
+    if (this.fileInput.current.files[0]) {
+      formData.append("image", this.fileInput.current.files[0], this.fileInput.current.files[0].name);
+    }
     API.createUser(formData)
       .then(res => {
-        // console.log(formData)
-        this.setState({
-          userType: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          subject: "",
-          subjects: []
-        });
+        if (res.data.error) {
+          // Show error to user
+          this.setState({
+            error: res.data.error
+          })
+        } else {
+          this.setState({
+            userType: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            subject: "",
+            subjects: [],
+            createdUser: true
+          });
+        }
       })
       .catch(err => console.log(err));
   }
   pushSubject = (subject) => {
     this.setState({ subjects: [...this.state.subjects, subject] });
     this.setState({ subject: "" })
-};
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -63,29 +71,31 @@ class Signup extends Component {
     });
   };
 
-    render() {
-        return (
-            <Container>
-                <Row>
-                    <SignUpForm
-                        userType={this.state.userType}
-                        firstName={this.state.firstName}
-                        lastName={this.state.lastName}
-                        email={this.state.email}
-                        password={this.state.password}
-                        subject={this.state.subject}
-                        subjects={this.state.subjects}
-                        handleInputChange={this.handleInputChange}
-                        signUpOnClick={this.signUpOnClick}
-                        pushSubject={this.pushSubject}
-                        fileRef={this.fileInput}
-                    />
-                </Row>
-            </Container>
-        )
+  render() {
+    return (
+      <Container>
+        <Row>
+          <SignUpForm
+            userType={this.state.userType}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            email={this.state.email}
+            password={this.state.password}
+            subject={this.state.subject}
+            subjects={this.state.subjects}
+            handleInputChange={this.handleInputChange}
+            signUpOnClick={this.signUpOnClick}
+            pushSubject={this.pushSubject}
+            fileRef={this.fileInput}
+            error={this.state.error}
+            createdUser={this.state.createdUser}
+          />
+        </Row>
+      </Container>
+    )
 
-    }
-  
+  }
+
 }
 
 export default Signup;
