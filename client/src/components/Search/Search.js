@@ -41,7 +41,7 @@ class Search extends Component {
                   key={index}
                   name={tutor.firstName + " " + tutor.lastName}  
                   image={tutor.image}
-                  subjects={tutor.subjects}
+                  subjects={tutor.subjects.join(", ")}
                 />
             ))} else if(this.state.hasSearched) {
                 return <div  className="noResults">No Results Found!</div>;

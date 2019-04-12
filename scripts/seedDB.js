@@ -13,7 +13,7 @@ const allUsersSeed = [
         lastName: "Smith",
         email: "jsmith@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://studentexchange.emu.edu.tr/PublishingImages/Images/IMG_6385.JPG?RenditionID=6",
         subjects: ["React", "HTML", "CSS", "Bootstrap"],
         featured: true
     },
@@ -23,7 +23,7 @@ const allUsersSeed = [
         lastName: "Gomez",
         email: "jgomez@gmail.com",
         password: "password",
-        image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:   "https://static.rms.com/email/images/anaiskatz.jpeg",
         subjects: ["Javascript", "Python"],
         featured: true
     },
@@ -33,7 +33,7 @@ const allUsersSeed = [
         lastName: "Jones",
         email: "bjones@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://www.scholarships.unsw.edu.au/sites/default/files/styles/profile/public/profiles/David%20Abi-Hanna3.jpg?itok=p3_C1l1q",
         subjects: ["Math", "Finance", "Economics"],
         featured: true
     },
@@ -43,7 +43,7 @@ const allUsersSeed = [
         lastName: "Morrison",
         email: "lmorrison@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://jkweb.berkeley.edu/external/images/people/former/Cameron_Hu_small.jpg",
         subjects: ["Physics"],
         featured: true
     },
@@ -63,7 +63,7 @@ const allUsersSeed = [
         lastName: "Gallagher",
         email: "vgallagher@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://79s1uk97q9-flywheel.netdna-ssl.com/wp-content/uploads/2018/05/jack.jpg",
         subjects: ["History", "Algebra"],
         featured: true
     },
@@ -73,7 +73,7 @@ const allUsersSeed = [
         lastName: "James",
         email: "mjames@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://www.expectmoretn.org/wp-content/uploads/2016/02/Preston-Nicely.jpg",
         subjects: ["Chemistry", "Biology"],
         featured: true
     },
@@ -83,7 +83,7 @@ const allUsersSeed = [
         lastName: "Simpson",
         email: "jsimpson@gmail.com",
         passord: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://www.brookings.edu/wp-content/uploads/2016/07/hennessey.jpg",
         subjects: ["Physics", "World History"],
         featured: true
     },
@@ -93,7 +93,7 @@ const allUsersSeed = [
         lastName: "Cameron",
         email: "ccameron@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://www.goshen.edu/wp-content/uploads/sites/4/2012/06/SIP-Marita-Beachy.jpg",
         subjects: ["Geometry"],
         featured: true
     },
@@ -103,7 +103,7 @@ const allUsersSeed = [
         lastName: "Wilkinson",
         email: "ewilkinson@gmail.com",
         password: "password",
-        image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:   "https://www.learnamericanenglishonline.com/images/femalestudent1.JPG",
         subjects: ["Javascript", "Python"],
         featured: true
     },
@@ -113,7 +113,7 @@ const allUsersSeed = [
         lastName: "Brown",
         email: "jbrown@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://pbs.twimg.com/profile_images/1056917652894113794/Rg1NRfS9_400x400.jpg",
         subjects: ["Chemestry"],
         featured: true
     },
@@ -123,7 +123,7 @@ const allUsersSeed = [
         lastName: "Williams",
         email: "gwilliams@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://www.peerforward.org/wp-content/uploads/2016/11/Screen-Shot-2016-09-26-at-9.47.18-AM.png",
         subjects: ["Economics", "Math"],
         featured: true
     },
@@ -133,7 +133,7 @@ const allUsersSeed = [
         lastName: "Madueno",
         email: "jmadueno@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://cola.unh.edu/sites/default/files/styles/portrait_480x600/public/person/2018/08/pulecio-mauricio-2018-1920x2885.jpg?itok=9j3N6P-a&timestamp=1535573192",
         subjects: ["Latin America Studies", "Mexican History", "History"],
         featured: true
     },
@@ -143,7 +143,7 @@ const allUsersSeed = [
         lastName: "Johnson",
         email: "mjohnson@gmail.com",
         password: "password",
-        image:   "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:   "https://photos.spareroom.com/images/flatshare/listings/large/20/16/201632422.jpg",
         subjects: ["History", "Italian"],
         featured: true
     },
@@ -153,7 +153,7 @@ const allUsersSeed = [
         lastName: "Jones",
         email: "mjones@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://assets.sourcemedia.com/dims4/default/907ed33/2147483647/resize/215x%3E/quality/90/?url=https%3A%2F%2Fassets.sourcemedia.com%2F48%2F29%2F66db4f6b4b5ca941577cd610c163%2Fkathie-miley-headshot.jpg",
         subjects: ["English", "Writing I"],
         featured: true
     },
@@ -163,7 +163,7 @@ const allUsersSeed = [
         lastName: "Marquez",
         email: "amarquez@gmail.com",
         password: "password",
-        image:  "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png",
+        image:  "https://static1.squarespace.com/static/577ecb5ae4fcb56088ad4a83/t/5994aae503596e5d7059bc90/1502915313235/?format=1000w",
         subjects: ["Spanish I", "Spanish II"],
         featured: true
     },
