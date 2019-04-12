@@ -64,22 +64,23 @@ export default function SignUpForm(props) {
           placeholder="Password"
           required 
         />
+        {(props.userType === "tutor") ?
         <div className="text-center">
           <TutorSubjects
             subject={props.subject}
             subjects={props.subjects}
             handleInputChange={props.handleInputChange}
             pushSubject={props.pushSubject}
+            removeSubOnClick={props.removeSubOnClick}
           />
         </div>
+        : null}
         <div className="clear"></div>
         <div className="text-center">
           <div className="form-group">
 
             <label>Image</label>
             <input type="file" id="upload" name={"image"} ref={props.fileRef}></input>
-
-
           </div>
 
           {(props.error) ? <div class="alert alert-danger alert-dismissible fade show" role="alert"> {props.error}

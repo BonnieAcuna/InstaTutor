@@ -72,6 +72,11 @@ class Signup extends Component {
     });
   };
 
+  removeSubOnClick = (event) => {
+    event.preventDefault()
+    console.log(this)
+  }
+
   render() {
     return (
       <Container>
@@ -90,6 +95,7 @@ class Signup extends Component {
             fileRef={this.fileInput}
             error={this.state.error}
             createdUser={this.state.createdUser}
+            removeSubOnClick={this.removeSubOnClick}
 
           />
         </Row>

@@ -4,47 +4,31 @@ import React from "react";
 
 export default function TutorSubjects(props) {
   return (
-      <div className="text-center">
-        <input
-          className="col-md-10"
-          value={props.subject}
-          onChange={props.handleInputChange}
-          name="subject"
-          placeholder="Subject"
-        />
-        <br/>
-        <button
-          type="button"
-          className="add-subject btn btn-primary mb-5"
-          onClick={() => props.pushSubject(props.subject)}
-        >
-          Add Subject
+    <div className="text-center">
+      <input
+        className="col-md-10"
+        value={props.subject}
+        onChange={props.handleInputChange}
+        name="subject"
+        placeholder="Subject"
+      />
+      <br />
+      <button
+        type="button"
+        className="add-subject btn btn-primary mb-2"
+        onClick={() => props.pushSubject(props.subject)}
+      >
+        Add Subject
         </button>
 
-        {props.subjects.map(oneSub => (
-          <span key={oneSub}>
-            <h6>
-              {oneSub}
-              {
-                <button
-                  type="button"
-                  className="close"
-                  aria-label="Close"
-                  style={{
-                    backgroundColor: "red",
-                    color: "white",
-                    border: "solid",
-                    borderColor: "white",
-                    borderRadius: "5%",
-                    padding: "2px"
-                  }}
-                >
-                  x
-                </button>
-              }
-            </h6>
-          </span>
-        ))}
-      </div>
+      {props.subjects.map(oneSub => (
+        <div key={oneSub}>
+          <div className="text-left" style={{fontSize:"28px"}}>
+            {oneSub}
+            <button type="button" onClick={props.removeSubOnClick} style={{marginLeft:"8px", fontSize:"8px", backgroundColor:"red", borderRadius:"5%", position:"relative", bottom:"5px"}}>X</button>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
