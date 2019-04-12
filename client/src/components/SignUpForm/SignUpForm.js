@@ -22,7 +22,7 @@ export default function SignUpForm(props) {
           type="radio"
           name="userType"
           value="user"
-          className="ml-4"
+          
           onChange={props.handleInputChange}
         />{" "}
         User
@@ -78,7 +78,7 @@ export default function SignUpForm(props) {
         </div>
         <button
         type="button"
-        className="signup-btn btn btn-primary"
+        className="signup-btn btn btn-success"
         onClick={() =>
           props.signUpOnClick(
             props.userType,

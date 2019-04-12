@@ -5,12 +5,11 @@
     .tutorView {
         display:inline-flex;
         background-color:white;
-        box-shadow:0 0 40px 4px rgba(0,0,0,0.1);
+        box-shadow: .3rem .3rem .3rem rgb(24, 24, 207);
         border-radius:5px;
         overflow:hidden;
         max-width:100%;
-        // margin-top: 20px;
-        // margin-bottom: 20px;
+        margin: 3rem auto;
         transition:.4s;
         cursor:pointer;
         text-align:left;
