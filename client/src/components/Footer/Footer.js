@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Footer.scss"
 //import { Container, Row } from '../Grid/index';
 
 class Footer extends React.Component {

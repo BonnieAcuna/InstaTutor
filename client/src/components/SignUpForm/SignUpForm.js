@@ -22,7 +22,7 @@ export default function SignUpForm(props) {
           type="radio"
           name="userType"
           value="user"
-          className="ml-4"
+          
           onChange={props.handleInputChange}
         />{" "}
         User
@@ -79,6 +79,7 @@ export default function SignUpForm(props) {
             <label>Image</label>
             <input type="file" id="upload" name={"image"} ref={props.fileRef}></input>
 
+
           </div>
 
           {(props.error) ? <div class="alert alert-danger alert-dismissible fade show" role="alert"> {props.error}
@@ -109,6 +110,7 @@ export default function SignUpForm(props) {
             }
           >
             Sign Up
+
       </button>
         </div>
 

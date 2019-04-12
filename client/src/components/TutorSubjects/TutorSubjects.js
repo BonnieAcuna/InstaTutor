@@ -12,9 +12,10 @@ export default function TutorSubjects(props) {
           name="subject"
           placeholder="Subject"
         />
+        <br/>
         <button
           type="button"
-          className="add-subject btn btn-primary"
+          className="add-subject btn btn-primary mb-5"
           onClick={() => props.pushSubject(props.subject)}
         >
           Add Subject

@@ -1,7 +1,11 @@
 .footer {
-    font-size: 2rem;
-    color: $color-purple-transparent;
-    display: flex;
-    justify-content: center;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    color: rgb(24, 24, 207);
+    overflow: hidden;
+    border-top: 2px solid lightgray;
+    background: lightsteelblue;
 }
 

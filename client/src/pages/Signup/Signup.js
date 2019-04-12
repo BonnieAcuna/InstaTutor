@@ -3,6 +3,7 @@ import { Container, Row } from "../../components/Grid/index";
 //import Login from "../../components/Login/Login";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
+import "./style.scss";
 
 class Signup extends Component {
   state = {
@@ -89,6 +90,7 @@ class Signup extends Component {
             fileRef={this.fileInput}
             error={this.state.error}
             createdUser={this.state.createdUser}
+
           />
         </Row>
       </Container>
