@@ -3,8 +3,10 @@ import React from "react";
 //import { Input } from "../Form/index";
 import TutorSubjects from "../TutorSubjects/TutorSubjects";
 import "./style.scss";
+import { withRouter } from 'react-router'
 
-export default function SignUpForm(props) {
+
+function SignUpForm(props) {
   return (
     <div className="sign-up text-center">
       <h1>Create a New Account</h1>
@@ -119,3 +121,5 @@ export default function SignUpForm(props) {
     </div>
   );
 }
+
+export default withRouter(SignUpForm);

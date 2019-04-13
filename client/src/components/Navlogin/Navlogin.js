@@ -1,6 +1,8 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 
-export default function Navlogin(props) {
+
+function Navlogin(props) {
     return (
         <div>
             <form onSubmit={props.loginOnClick} className="form-inline" >
@@ -32,3 +34,5 @@ export default function Navlogin(props) {
         </div>
     )
 }
+
+export default withRouter(Navlogin);

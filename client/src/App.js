@@ -22,6 +22,10 @@ class App extends Component {
     error: null
   }
 
+  // renderRoot = () =>{
+  //   this.props.history.push("/");
+  // }
+
   updateUser = () => {
     API.getCurrentUser()
       .then((res) => {
@@ -29,6 +33,7 @@ class App extends Component {
           user: res.data.user,
           loggedIn: true
         })
+        
       })
       .catch(err => {
         console.log(err);
@@ -41,8 +46,9 @@ class App extends Component {
     axios.post("/auth/login", { email, password })
       .then((res) => {
         localStorage.setItem("jwtToken", res.data.token);
-        if (res.data.success){
+        if (res.data.success) {
           this.updateUser();
+          // this.renderRoot();
         }
         if (res.data.error) {
           // Show error to user
@@ -56,15 +62,15 @@ class App extends Component {
 
   logOutOnClick = () => {
     axios.get("/auth/logout")
-      .then( res =>{
+      .then(res => {
         localStorage.removeItem("jwtToken");
         this.setState({
-          user:{},
+          user: {},
           loggedIn: false
         });
         window.location.reload();
       })
-      .catch(err=>{
+      .catch(err => {
         console.log(err)
       });
   };
@@ -96,9 +102,9 @@ class App extends Component {
           />
           <Switch>
             <Route exact path="/" render={(props) => <Body updateUser={this.updateUser} {...props} />} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/user/:userid" render={(props) => <UserView loggedIn={this.state.loggedIn} {...props}/>} />
-            <Route exact path="/dashboard/:userid" render={(props) => <Dashboard user={this.state.user} {...props} /> } />
+            <Route exact path="/signup" render={(props) => <Signup updateUser={this.updateUser} {...props} />} />
+            <Route exact path="/user/:userid" render={(props) => <UserView loggedIn={this.state.loggedIn} {...props} />} />
+            <Route exact path="/dashboard/:userid" render={(props) => <Dashboard user={this.state.user} {...props} />} />
             <Route component={NoMatch} />
           </Switch>
           <Footer />
