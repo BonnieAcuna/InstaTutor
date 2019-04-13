@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container, Row } from "../../components/Grid";
+import { Container, Row, Col } from "../../components/Grid";
 
 class Dashboard extends Component {
 
@@ -20,23 +20,23 @@ class Dashboard extends Component {
     renderUser(user) {
         if (Object.values(user).length >= 1) {
             return (
-                <div className="container tutorView mt-3 mb-2">
-                    <Row>
-                        <img src={user.user.image} alt="user" className="cardImg" />
-                        <div className="card-footer">
-                            <div className="card-title text-center">
-                                {user.user.firstName}
-                                {user.user.lastName}<br></br>
-                                {user.user.email}
-                            </div>
-                            <div className="class-description text-center">
-                                <div className="md-8">
-                                    {user.user.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
-                                </div>
+                <Col size="4">
+                    <div className="card mt-4">
+                        <img src={user.user.image} alt="user" className="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">{user.user.firstName} {user.user.lastName}</h5>
+                            <div className="card-text">
+                                Subjects:
+                                <ul>
+                                {user.user.subjects.map(subject => <li key={subject}>{subject}</li>)}
+                                </ul>
                             </div>
                         </div>
-                    </Row>
-                </div>
+                        <div className="card-footer">
+                            Message me at: <a href={`mailto:${user.user.email}`}>{user.user.email}</a>
+                        </div>
+                    </div>
+                </Col>
             )
         }
         return;
@@ -59,7 +59,7 @@ class Dashboard extends Component {
 
         return (
             <Container>
-                <Row>
+                <Row className="justify-content-md-center">
                     {this.renderUser(this.state.user)}
                 </Row>
             </Container>
