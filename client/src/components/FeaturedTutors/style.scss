@@ -3,7 +3,7 @@
     width: 150px;
     // margin-right: 30px;
     display: inline-flex;
-    font-size: 10px;
+    font-size: 11px;
     margin-top: 7px;
     border: 2px solid lightslategray;
     box-shadow: .3rem .3rem .3rem gray;
@@ -19,4 +19,19 @@
 .cardHead {
     background: transparent;
     border-bottom-color: transparent !important;
+    color: black;
+    text-decoration: none;
+    font-family: rocky, serif;
+    font-weight: 400;
+    font-style: normal;
+
+
+}
+
+.cardBody {
+    color: black;
+    text-decoration: none;
+    font-family: rocky, serif;
+    font-weight: 400;
+    font-style: normal;
 }

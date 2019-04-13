@@ -9,27 +9,33 @@ class Dashboard extends Component {
         user: {}
     };
 
-    componentDidMount(){
+    componentDidMount() {
         this.loadUser()
     };
-    
-    componentDidUpdate(){
+
+    componentDidUpdate() {
         this.loadUser()
     }
 
-    renderUser (user) {
-        if (Object.values(user).length >= 1){
-            return(
-                <div className="container tutorView">
-                    <div className="col-md-8 mx-auto">
-                    {user.user.firstName}
-                    {user.user.lastName}
-                    {user.user.email}
-
-                  <img src={user.user.image} alt="user"/>
-
-                  {user.user.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
-                  </div>
+    renderUser(user) {
+        if (Object.values(user).length >= 1) {
+            return (
+                <div className="container tutorView mt-3 mb-2">
+                    <Row>
+                        <img src={user.user.image} alt="user" className="cardImg" />
+                        <div className="card-footer">
+                            <div className="card-title text-center">
+                                {user.user.firstName}
+                                {user.user.lastName}<br></br>
+                                {user.user.email}
+                            </div>
+                            <div className="class-description text-center">
+                                <div className="md-8">
+                                    {user.user.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                                </div>
+                            </div>
+                        </div>
+                    </Row>
                 </div>
             )
         }
@@ -37,20 +43,20 @@ class Dashboard extends Component {
     }
 
     loadUser() {
-        if(this.state.userId !== this.props.match.params.userid){
+        if (this.state.userId !== this.props.match.params.userid) {
             API.getCurrentUser(this.props.match.params.userid)
-            .then(res=> {
-                this.setState({ 
-                    user:res.data,
-                    userId: this.props.match.params.userid 
+                .then(res => {
+                    this.setState({
+                        user: res.data,
+                        userId: this.props.match.params.userid
+                    })
                 })
-            })
-            .catch(err=> console.log(err));
+                .catch(err => console.log(err));
         }
     }
 
     render() {
-        
+
         return (
             <Container>
                 <Row>

@@ -30,7 +30,7 @@ class FeaturedTutors extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <div className="card-body text-center">
+                                    <div className="card-body cardBody text-center">
 
                                         {this.props.subjects}
                                     </div>
