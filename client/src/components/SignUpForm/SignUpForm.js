@@ -81,7 +81,7 @@ function SignUpForm(props) {
         <div className="text-center">
           <div className="form-group">
 
-            <label>Image</label>
+            <label>Add your Photo: </label>
             <input type="file" id="upload" name={"image"} ref={props.fileRef}></input>
           </div>
 
@@ -99,7 +99,7 @@ function SignUpForm(props) {
 
           <button
             type="button"
-            className="signup-btn btn btn-primary"
+            className="signup-btn btn btn-success"
             onClick={() =>
               props.signUpOnClick(
                 props.userType,

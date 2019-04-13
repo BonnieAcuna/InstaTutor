@@ -114,7 +114,7 @@ const allUsersSeed = [
         email: "jbrown@gmail.com",
         password: "password",
         image:  "https://pbs.twimg.com/profile_images/1056917652894113794/Rg1NRfS9_400x400.jpg",
-        subjects: ["Chemestry"],
+        subjects: ["Chemistry"],
         featured: true
     },
     {
