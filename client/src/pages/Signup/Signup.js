@@ -4,6 +4,7 @@ import { Container, Row } from "../../components/Grid/index";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import API from "../../utils/API";
 import "./style.scss";
+import axios from "axios"
 
 class Signup extends Component {
   state = {
@@ -46,16 +47,34 @@ class Signup extends Component {
             error: res.data.error
           })
         } else {
-          this.setState({
-            userType: "",
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            subject: "",
-            subjects: [],
-            createdUser: true
-          });
+          const { email, password } = this.state
+          axios.post("/auth/login", { email, password })
+            .then((res) => {
+              localStorage.setItem("jwtToken", res.data.token);
+              if (res.data.success) {
+                this.props.updateUser();
+                
+                this.props.history.push('/')
+                // this.renderRoot();
+              }
+              if (res.data.error) {
+                // Show error to user
+                this.setState({
+                  error: res.data.error
+                })
+              }
+              this.setState({
+                userType: "",
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                subject: "",
+                subjects: [],
+                createdUser: true
+              })
+            })
+            .catch(err => console.log(err))
         }
       })
       .catch(err => console.log(err));
@@ -72,9 +91,14 @@ class Signup extends Component {
     });
   };
 
-  removeSubOnClick = (event) => {
-    event.preventDefault()
-    console.log(this)
+  removeSubOnClick = (subject) => {
+    // console.log(subject)
+    // event.preventDefault()
+    // console.log(event.target.id)
+    // let id = event.target.id
+    // (this.state.subjects).filter(subject => event.target.id)
+    let newSubjects = this.state.subjects.filter(ele => ele !== subject)
+    this.setState({subjects: newSubjects})
   }
 
   render() {
@@ -96,7 +120,6 @@ class Signup extends Component {
             error={this.state.error}
             createdUser={this.state.createdUser}
             removeSubOnClick={this.removeSubOnClick}
-
           />
         </Row>
       </Container>

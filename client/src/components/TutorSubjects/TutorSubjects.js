@@ -23,9 +23,9 @@ export default function TutorSubjects(props) {
 
       {props.subjects.map(oneSub => (
         <div key={oneSub}>
-          <div className="text-left" style={{fontSize:"28px"}}>
+          <div className="text-left"  style={{fontSize:"28px"}}>
             {oneSub}
-            <button type="button" onClick={props.removeSubOnClick} style={{marginLeft:"8px", fontSize:"8px", backgroundColor:"red", borderRadius:"5%", position:"relative", bottom:"5px"}}>X</button>
+            <button type="button" className="btn" id={oneSub} onClick={()=> props.removeSubOnClick(oneSub)} style={{marginLeft:"8px",position:"relative", bottom:"8px", marginTop: "10px"}}><i class="fas fa-trash-alt"></i></button>
           </div>
         </div>
       ))}
