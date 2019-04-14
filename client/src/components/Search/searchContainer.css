@@ -22,3 +22,11 @@ button {
     margin-top: 24px;
     background-color: rgb(24, 24, 207);
 }
+
+.scrollbar {
+    margin-top: 300px;
+}
+
+.results {
+    font-size: 36px; 
+}

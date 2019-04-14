@@ -3,17 +3,29 @@ import { Container, Row, Col } from "../Grid/index.js";
 import API from "../../utils/API";
 import "./searchContainer.css";
 import FeaturedTutors from "../FeaturedTutors/FeaturedTutors";
+import _ from 'lodash';
+// import SearchFtTutors from "../SearchFtTutors/index";
 
 class Search extends Component {
-    state = {
+constructor(props) {
+    super(props)
+    this.state = {
         search: "",
         tutors: [],
         hasSearched: false
     }
+    this.tutorRef= React.createRef()
+}
+
+
 
     loadTutors = (query) => {
         API.getSearchedTutors(query)
-            .then(res => {this.setState({tutors: res.data})})
+            .then(res => {this.setState({tutors: res.data}, () => {
+            console.log(this.tutorRef)    
+            //this.tutorRef.current.scrollheight = '1200px';
+            window.scrollTo(0, this.tutorRef.current.offsetTop)
+            })})
             .catch(err => console.log(err));
     }
 
@@ -75,21 +87,21 @@ class Search extends Component {
                     <Col size="md-2">
                     </Col>
                 </Row>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-
+            <div className="scrollbar" style={this.state.tutors.length > 0 ? {minHeight:'700px'} : {}} ref={this.tutorRef}>
             <Container>
                 <Row>
-                    {this.renderSearchedTutors()}
+                    <p className="results text-center">Search Results</p>
                 </Row>
+                <Row>
+                    {/* <SearchFtTutors */}
+                    {this.renderSearchedTutors()}
+                     {/* tutor= {this.state.tutors} */}
+                    {/* /> */}
+                </Row>
+                
             </Container>
             </div>
+            </div>  
         )
     }
 }
