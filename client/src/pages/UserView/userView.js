@@ -36,7 +36,7 @@ class UserView extends Component {
         if (Object.values(tutor).length > 1) {
             return (
 
-                <div className="card tutorView mt-3 mb-2">
+                <div className="card tutorView mt-3">
                     <Row>
 
                         <img src={tutor.image} alt="tutor" className="cardImg" />
@@ -44,8 +44,8 @@ class UserView extends Component {
 
                         <div className="card-footer">
                             <div className="card-title text-center">
-                                {tutor.firstName}
-                                {tutor.lastName}<br></br>
+                                {tutor.firstName + " " + tutor.lastName}
+                                <br></br>
                                 {tutor.email}
                             </div>
                             <div className="card-description text-center">

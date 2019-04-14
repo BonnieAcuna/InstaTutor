@@ -6,7 +6,7 @@ import Navlogin from "../Navlogin/Navlogin";
 
 function Nav(props) {
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-lg bg-light">
       <Link className="navbar-brand" to="/">
         <img src={require('../../logoNoTitle.png')} width="70" height="60" className="d-inline-block align-top" alt=""></img>
       </Link>

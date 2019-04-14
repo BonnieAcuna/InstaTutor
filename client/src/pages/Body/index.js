@@ -11,13 +11,13 @@ class Body extends React.Component {
     }
     render() {
         return (
-
+            <div className="body">
             <div className="bgImage">
 
 
                 <Search />
             </div>
-            
+            </div>
                 
            
         )
