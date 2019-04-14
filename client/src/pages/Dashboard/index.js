@@ -23,8 +23,8 @@ class Dashboard extends Component {
                 <Col size="4">
                     <div className="card mt-4">
                         <img src={user.user.image} alt="user" className="card-img-top" />
-                        <div class="card-body">
-                            <h5 class="card-title">{user.user.firstName} {user.user.lastName}</h5>
+                        <div className="card-body">
+                            <h5 className="card-title">{user.user.firstName} {user.user.lastName}</h5>
                             <div className="card-text">
                                 Subjects:
                                 <ul>
