@@ -46,7 +46,7 @@ class UserView extends Component {
                             <div className="card-title text-center">
                                 {tutor.firstName + " " + tutor.lastName}
                                 <br></br>
-                                {tutor.email}
+                                <a href={`mailto:${tutor.email}`}>Contact Me</a>
                             </div>
                             <div className="card-description text-center">
                                 <div className="md-8">
