@@ -3,7 +3,7 @@ import { Container, Row, Col } from "../Grid/index.js";
 import API from "../../utils/API";
 import "./searchContainer.css";
 import FeaturedTutors from "../FeaturedTutors/FeaturedTutors";
-import _ from 'lodash';
+// import _ from 'lodash';
 // import SearchFtTutors from "../SearchFtTutors/index";
 
 class Search extends Component {
