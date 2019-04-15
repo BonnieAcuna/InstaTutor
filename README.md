@@ -10,3 +10,10 @@ The go-to app to find tutors that offer expertise in certain subjects for the us
   * React-Router
   * HTML5 / SASS / JavaScript
   * JQuery
+  * Node
+  * Express
+  * Passport
+  * Cloudinary API
+  * MongoDB
+  * BCrypt
+
