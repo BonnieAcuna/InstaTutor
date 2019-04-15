@@ -1,12 +1,15 @@
 .footer {
-    position:fixed;
-    left:0;
-    bottom:0;
-    right:0;
-    color: rgb(24, 24, 207);
-    overflow: hidden;
-    border-top: 2px solid lightgray;
-    background: lightsteelblue;
+    
+        position: fixed;
+        left:0;
+        bottom:-1rem;
+        right:0;
+        color: rgb(24, 24, 207);
+        overflow: hidden;
+        border-top: 2px solid lightgray;
+        background-color: lightsteelblue;
+        margin-top: 30rem;
+    
     
 }
 
