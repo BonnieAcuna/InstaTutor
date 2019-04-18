@@ -2,7 +2,7 @@
 //Verified if user is logged in
 //if user is logged in - show the tutor(s) - if user is not logged in - redirect to the sign up page
 import React, { Component } from "react";
-import { Container, Row } from "../../components/Grid/index";
+import { Container, Row, Col } from "../../components/Grid/index";
 import Testimonials from "../../components/Testimonials";
 import API from "../../utils/API";
 import "./style.scss";
@@ -35,60 +35,61 @@ class UserView extends Component {
     renderTutor(tutor) {
         if (Object.values(tutor).length > 1) {
             return (
-
-                <div className="card tutorView mt-3">
-                    <Row>
-
-                        <img src={tutor.image} alt="tutor" className="cardImg" />
+                <Col size="4">
+                    <div className="card mt-3">
 
 
-                        <div className="card-footer">
-                            <div className="card-title text-center">
+                        <img src={tutor.image} alt="tutor" className="card-img-top" />
+
+
+                        <div className="card-body">
+                            <div className="card-title h5 text-center">
                                 {tutor.firstName + " " + tutor.lastName}
                                 <br></br>
                                 <a href={`mailto:${tutor.email}`}>Contact Me</a>
                             </div>
-                            <div className="card-description text-center">
-                                <div className="md-8">
+                            <div className="card-text text-center">
+                                {/* <div className="md-8"> */}
 
-                                    {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
-                                </div>
+                                {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                                {/* </div> */}
                             </div>
-                        <Testimonials render={tutor}/>
-                            </div>
+                            <Testimonials render={tutor} />
+                        </div>
 
-                        </Row>
-                        
+
+
                     </div>
+                </Col>
 
-                    )
-                }
-                return;
-            }
-        
+            )
+        }
+        return;
+    }
+
     loadTutor() {
         if (this.state.tutorId !== this.props.match.params.userid) {
-                        API.getTutor(this.props.match.params.userid)
-                            .then(res => {
-                                this.setState({
-                                    tutor: res.data,
-                                    tutorId: this.props.match.params.userid
-                                })
-                            })
-                            .catch(err => console.log(err));
-                    }
-                }
-            
+            API.getTutor(this.props.match.params.userid)
+                .then(res => {
+                    this.setState({
+                        tutor: res.data,
+                        tutorId: this.props.match.params.userid
+                    })
+                })
+                .catch(err => console.log(err));
+        }
+    }
+
     render() {
 
         return (
             <Container>
-                        <Row>
-                            {this.renderTutor(this.state.tutor)}
-                        </Row>
-                    </Container>
-                    )
-                }
-            }
-            
+                <Row className="justify-content-md-center">
+                    {this.renderTutor(this.state.tutor)}
+                </Row>
+            </Container>
+        )
+    }
+}
+
 export default UserView;
