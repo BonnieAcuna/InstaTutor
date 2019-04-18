@@ -48,10 +48,12 @@ class UserView extends Component {
                                 <br></br>
                                 <a href={`mailto:${tutor.email}`}>Contact Me</a>
                             </div>
-                            <div className="card-text text-center">
+                            <div className="card-text h6">
                                 {/* <div className="md-8"> */}
-
-                                {tutor.subjects.map(subject => <h1 key={subject}>{subject}</h1>)}
+                                <div className="subjects text-center h4">Subjects:</div>
+                                <ul>
+                                {tutor.subjects.map(subject => <li key={subject}>{subject}</li>)}
+                                </ul>
                                 {/* </div> */}
                             </div>
                             <Testimonials render={tutor} />
