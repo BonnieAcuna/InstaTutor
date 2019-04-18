@@ -25,16 +25,16 @@ class Dashboard extends Component {
                         <img src={user.user.image} alt="user" className="card-img-top" />
                         <div className="card-body">
                             <h5 className="card-title">{user.user.firstName} {user.user.lastName}</h5>
-                            <div className="card-text">
+                            {/* <div className="card-text">
                                 Subjects:
                                 <ul>
                                 {user.user.subjects.map(subject => <li key={subject}>{subject}</li>)}
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
-                        <div className="card-footer">
+                        {/* <div className="card-footer">
                             Message me at: <a href={`mailto:${user.user.email}`}>{user.user.email}</a>
-                        </div>
+                        </div> */}
                     </div>
                 </Col>
             )
